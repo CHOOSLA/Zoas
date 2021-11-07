@@ -12,8 +12,12 @@ import java.util.Observable;
 import java.util.Observer;
 
 
+import static zoas_5.HelloController.mediaPath;
+import static zoas_5.HelloController.seekSentance;
 
-public class HelloApplication extends Application implements Observer {
+
+
+public class HelloApplication extends Application {
 
     Thread t;
     FXMLLoader fxmlLoader;
@@ -24,17 +28,15 @@ public class HelloApplication extends Application implements Observer {
         //mediaPath는 전역변수 이므로 매우 위험,,
         Parameters params = getParameters();
         List<String> list = params.getRaw();
+        mediaPath = list.get(0);
 
-
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml")); //fxml을 로드한다
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("resources/hello-view.fxml")); //fxml을 로드한다
 
         scene = new Scene(fxmlLoader.load(), 900, 600);
         HelloController test  =fxmlLoader.getController();
         stage.setTitle("ZOAS_MediaPlayer");
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     public void openMediaPlayer(String args){
@@ -44,9 +46,19 @@ public class HelloApplication extends Application implements Observer {
     public FXMLLoader getFxmlLoader(){
         return fxmlLoader;
     }
+}
 
-    @Override
-    public void update(Observable o, Object arg) {
+class test2 {
+
+    FXMLLoader fxmlLoader;
+
+    public static void main(String[] args){
+        HelloController.seekSentance = "";
+
+
+        System.out.println("이거");
+        HelloApplication yes = new HelloApplication();
+        yes.openMediaPlayer("src/zoas_5/resources/test.mp4"); // 계속 실행됨
 
     }
 }

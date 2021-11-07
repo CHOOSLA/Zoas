@@ -95,7 +95,7 @@ public class HelloController implements Initializable {
         final int IV_WIDTH = 75;
         final int IV_HEIGHT = 100;
         //new File(mediaPath).toURI().toString()
-        mediaVideo = new Media(mediaPath); //미디어 연결
+        mediaVideo = new Media(new File(mediaPath).toURI().toString()); //미디어 연결
         mediaplayer = new MediaPlayer(mediaVideo);
         media_p.setMediaPlayer(mediaplayer);
         //media_p.setLayoutX(mediaVideo.getWidth());
@@ -105,7 +105,7 @@ public class HelloController implements Initializable {
 
 
         try {
-            Image ImagePlay = new Image(new File("src/main/java/com/example/demo/resources/play-btn.png").toURL().toString());
+            Image ImagePlay = new Image(new File("src/zoas_5/resources/play-btn.png").toURL().toString());
             ivPlay = new ImageView(ImagePlay);
             ivPlay.setFitHeight(IV_HEIGHT);
             ivPlay.setFitWidth(IV_WIDTH);
@@ -113,7 +113,7 @@ public class HelloController implements Initializable {
             e.printStackTrace();
         }
         try {
-            Image ImagePause = new Image(new File("src/main/java/com/example/demo/resources/stop-btn.png").toURL().toString());
+            Image ImagePause = new Image(new File("src/zoas_5/resources/stop-btn.png").toURL().toString());
             ivPause = new ImageView(ImagePause);
             ivPause.setFitHeight(IV_HEIGHT);
             ivPause.setFitWidth(IV_WIDTH);
