@@ -16,28 +16,28 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Newnote extends JPanel {
-	DateTimeFormatter datetimeformat = DateTimeFormatter.ofPattern("yyyy-MM-dd a h½Ã mmºĞ");
+	DateTimeFormatter datetimeformat = DateTimeFormatter.ofPattern("yyyy-MM-dd a hì‹œ mmë¶„");
 	static public NoteInfo noteinfo;
 	
 	JPanel linepanel_1 = new JPanel();
-	JButton ZoomBtn = new JButton("°­ÀÇ ¿¬°áÇÏ±â");
+	JButton ZoomBtn = new JButton("ê°•ì˜ ì—°ê²°í•˜ê¸°");
 	
 	JLabel noteDateLabel = new JLabel();
 	
 	JTextField noteNameField = new JTextField(){
 		 @Override public void setBorder(Border border) {
-		        // ÅØ½ºÆ®ÇÊµå ¿Ü°û¼± Á¦°Å
+		        // í…ìŠ¤íŠ¸í•„ë“œ ì™¸ê³½ì„  ì œê±°
 		    }
 	};
 	public void note_init() {
 		noteinfo=new NoteInfo();
 		LocalDateTime time =LocalDateTime.now();		
 		String DateTime = datetimeformat.format(time);
-		noteinfo.setName("»õ³ëÆ®");	//±âº» ÀÌ¸§
-		noteinfo.setCreatDate(DateTime);	//»ı¼º ³¯Â¥
-		noteinfo.setEditDate(DateTime);	//¼öÁ¤ ³¯Â¥
-		noteinfo.setRecordText(" ");	//À½¼º ±â·Ï
-		noteinfo.setSummaryText(" ");	//¿ä¾à
+		noteinfo.setName("ìƒˆë…¸íŠ¸");	//ê¸°ë³¸ ì´ë¦„
+		noteinfo.setCreatDate(DateTime);	//ìƒì„± ë‚ ì§œ
+		noteinfo.setEditDate(DateTime);	//ìˆ˜ì • ë‚ ì§œ
+		noteinfo.setRecordText(" ");	//ìŒì„± ê¸°ë¡
+		noteinfo.setSummaryText(" ");	//ìš”ì•½
 	}
 	public void set() {
 		note_init();
@@ -52,7 +52,7 @@ public class Newnote extends JPanel {
 		setBackground(Color.WHITE);
 		setBounds(144, 0, 840, 611);
 		
-		//°¡·Î¼±À» À§ÇÑ ÆĞ³Î(ÀÌ¹ÌÁö·Î ¹Ù²ãµµ µÉµí...?)
+		//ê°€ë¡œì„ ì„ ìœ„í•œ íŒ¨ë„(ì´ë¯¸ì§€ë¡œ ë°”ê¿”ë„ ë ë“¯...?)
 		linepanel_1.setBackground(Color.LIGHT_GRAY);
 		linepanel_1.setBounds(12, 71, 815, 2);
 		add(linepanel_1);
@@ -61,15 +61,15 @@ public class Newnote extends JPanel {
 			}
 		});
 		
-		//°­ÀÇ ¿¬°áÇÏ±â ¹öÆ°
+		//ê°•ì˜ ì—°ê²°í•˜ê¸° ë²„íŠ¼
 		ZoomBtn.setForeground(Color.WHITE);
-		ZoomBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+		ZoomBtn.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15));
 		ZoomBtn.setBorderPainted(false);
 		ZoomBtn.setBackground(SystemColor.textHighlight);
 		ZoomBtn.setBounds(330, 200, 170, 76);
 		add(ZoomBtn);
 		
-		//³ëÆ® ÀÌ¸§ 
+		//ë…¸íŠ¸ ì´ë¦„ 
 		noteNameField.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -78,13 +78,13 @@ public class Newnote extends JPanel {
 				noteNameField.setText(noteinfo.getName());
 			}
 		});
-		noteNameField.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 17));
+		noteNameField.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 17));
 		noteNameField.setBounds(14, 25, 200, 22);
 		add(noteNameField);
 		noteNameField.setColumns(10);
 				
-		//³¯Â¥
-		noteDateLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
+		//ë‚ ì§œ
+		noteDateLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 11));
 		noteDateLabel.setBounds(14, 46, 150, 15);
 		add(noteDateLabel);
 		

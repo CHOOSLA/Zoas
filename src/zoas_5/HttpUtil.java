@@ -21,38 +21,38 @@ public class HttpUtil {
 	public static JsonConverter jsonConverter =new JsonConverter();
 	
 	public static  String postRequest(String strUrl,String jsonStr) {
-		String responsestr="";	//ÀÀ´ä ¹®ÀÚ¿­
+		String responsestr="";	//ì‘ë‹µ ë¬¸ìì—´
 		try {
 			URL url = new URL(strUrl);
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection();	//url °´Ã¼¿¡ ´ëÇÑ ¿¬°áÀ» ´ã´çÇÏ´Â URLConnection °´Ã¼ »ı¼º
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();	//url ê°ì²´ì— ëŒ€í•œ ì—°ê²°ì„ ë‹´ë‹¹í•˜ëŠ” URLConnection ê°ì²´ ìƒì„±
 
-			//¿äÃ» Çì´õ ¼³Á¤
+			//ìš”ì²­ í—¤ë” ì„¤ì •
 			connection.setRequestMethod("POST");
 			connection.setRequestProperty("Allow","POST, OPTIONS");
 			connection.setRequestProperty("Content-Type", "application/json");
-			connection.setRequestProperty("Accept","application/json");	//**ÀÀ´äÀ» JsonÀ¸·Î ¹Şµµ·Ï ¼³Á¤
+			connection.setRequestProperty("Accept","application/json");	//**ì‘ë‹µì„ Jsonìœ¼ë¡œ ë°›ë„ë¡ ì„¤ì •
 			connection.setRequestProperty("Vary","Accept");
 			connection.setDoOutput(true);
 			
-			/*Àü¼ÛÇÒ µ¥ÀÌÅÍ ¼³Á¤
-			 * POST ¿äÃ»À» ÇÒ ¶§¿¡´Â OutputStream °´Ã¼·Î µ¥ÀÌÅÍ¸¦ Àü¼Û
-			 * 1. Àü¼ÛÇÒ °´Ã¼°¡ ÀÖ´Ù¸é setDoOutput(true);
-			 * 2. getOutputStream() ¸Ş¼Òµå¸¦ ÅëÇØ ¿¬°á¿¡ »ç¿ëÇÒ OutputStream °´Ã¼¸¦ ¾òÀ½
-			 * 3. Àü¼ÛÇÒ µ¥ÀÌÅÍ°¡ ¹®ÀÚ¿­ÀÏ °æ¿ì´Â OutputStream Å¬·¡½º¸¦ È®ÀåÇÏ´Â DataOutputStream Å¬·¡½ºÀÇ writebytes() ¸Ş¼Òµå¸¦ È°¿ë
-			 * ->»ı¼ºÀÚ¿¡ OutputStream °´Ã¼¸¦ Àü´ŞÇÏ¿© »ı¼º DataOutputStream(connection.getOutputStream());
+			/*ì „ì†¡í•  ë°ì´í„° ì„¤ì •
+			 * POST ìš”ì²­ì„ í•  ë•Œì—ëŠ” OutputStream ê°ì²´ë¡œ ë°ì´í„°ë¥¼ ì „ì†¡
+			 * 1. ì „ì†¡í•  ê°ì²´ê°€ ìˆë‹¤ë©´ setDoOutput(true);
+			 * 2. getOutputStream() ë©”ì†Œë“œë¥¼ í†µí•´ ì—°ê²°ì— ì‚¬ìš©í•  OutputStream ê°ì²´ë¥¼ ì–»ìŒ
+			 * 3. ì „ì†¡í•  ë°ì´í„°ê°€ ë¬¸ìì—´ì¼ ê²½ìš°ëŠ” OutputStream í´ë˜ìŠ¤ë¥¼ í™•ì¥í•˜ëŠ” DataOutputStream í´ë˜ìŠ¤ì˜ writebytes() ë©”ì†Œë“œë¥¼ í™œìš©
+			 * ->ìƒì„±ìì— OutputStream ê°ì²´ë¥¼ ì „ë‹¬í•˜ì—¬ ìƒì„± DataOutputStream(connection.getOutputStream());
 			 * */
 			DataOutputStream  outputStream  = new DataOutputStream(connection.getOutputStream());
 			outputStream.writeBytes(jsonStr);
 			outputStream.flush();
 			outputStream.close();
             
-            // ÀÀ´ä ÄÚµå ¾ò±â
+            // ì‘ë‹µ ì½”ë“œ ì–»ê¸°
             int responseCode = connection.getResponseCode();
             System.out.println("responseCode::"+responseCode);
 
-            /*ÀÀ´ä µ¥ÀÌÅÍ ¾ò±â
-             * 1. getInputStream() ¸Ş¼Òµå¸¦ ÅëÇØ ÀÀ´ä µ¥ÀÌÅÍ¸¦ ÀĞÀ» ¼ö ÀÖ´Â InputStream°´Ã¼¸¦ ¾òÀ½
-             * 2. BufferedReader °´Ã¼¸¦ ÀÌ¿ëÇÏ¿© ÀÀ´äÀ» ¹®ÀÚ¿­·Î ¹ŞÀ½ 
+            /*ì‘ë‹µ ë°ì´í„° ì–»ê¸°
+             * 1. getInputStream() ë©”ì†Œë“œë¥¼ í†µí•´ ì‘ë‹µ ë°ì´í„°ë¥¼ ì½ì„ ìˆ˜ ìˆëŠ” InputStreamê°ì²´ë¥¼ ì–»ìŒ
+             * 2. BufferedReader ê°ì²´ë¥¼ ì´ìš©í•˜ì—¬ ì‘ë‹µì„ ë¬¸ìì—´ë¡œ ë°›ìŒ 
              * */
             if (responseCode<300) {
                 BufferedReader bufferedReader  = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -65,7 +65,7 @@ public class HttpUtil {
                 responsestr=stringBuffer.toString();              
                 System.out.println("response::"+responsestr);  
             }
-            else {	//ÀÀ´äÄÚµå°¡ Á¤»óÀÌ ¾Æ´Ï¸é Error! ¸®ÅÏÇÔ
+            else {	//ì‘ë‹µì½”ë“œê°€ ì •ìƒì´ ì•„ë‹ˆë©´ Error! ë¦¬í„´í•¨
             	responsestr="Error!";
             }
 
@@ -80,7 +80,7 @@ public class HttpUtil {
 	}
 	
 	public static  int patchRequest(String strUrl,String jsonStr) throws URISyntaxException, IOException, InterruptedException {
-		String responsestr="";	//ÀÀ´ä ¹®ÀÚ¿­
+		String responsestr="";	//ì‘ë‹µ ë¬¸ìì—´
 	
 		URI uri = new URI(strUrl);
 		HttpRequest request = HttpRequest.newBuilder(uri)

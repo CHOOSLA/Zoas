@@ -57,10 +57,10 @@ public class zoomConnect {
 		textField.setColumns(10);
 		
 		
-		JButton btnNewButton = new JButton("¿¬°áÇÏ±â");
+		JButton btnNewButton = new JButton("ì—°ê²°í•˜ê¸°");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Zoas.user.setclassid(textField.getText());	//È¸ÀÇ ¾ÆÀÌµğ ÀúÀå
+				Zoas.user.setclassid(textField.getText());	//íšŒì˜ ì•„ì´ë”” ì €ì¥
 				int ResponseCode1 = 0,ResponseCode2=0;
 				//update a livestream
 				String livestreamurl="https://api.zoom.us/v2/meetings/"+Zoas.user.getclassid()+"/livestream";
@@ -106,13 +106,13 @@ public class zoomConnect {
 						@Override
 						public void run() {
 							HelloApplication yes = new HelloApplication();
-							yes.openMediaPlayer("http://zoas.sch.ac.kr:80/hls/95384878370/index.m3u8"); // °è¼Ó ½ÇÇàµÊ
+							yes.openMediaPlayer("http://zoas.sch.ac.kr:80/hls/95384878370/index.m3u8"); // ê³„ì† ì‹¤í–‰ë¨
 						}
 					});
 
 					t.start();
 
-					System.out.println("ÀÌ°Í¸¶Áø?");
+					System.out.println("ì´ê²ƒë§ˆì§„?");
 				}
 				
 				

@@ -12,22 +12,22 @@ import javax.swing.text.Highlighter;
 public class textHighlighter {
 	
 	public void highlightKeyword(JTextPane textComp, ArrayList<String> patternList) {
-		//ÀÌÀü ÇÏÀÌ¶óÀÌÆ®¸¦ Áö¿î´Ù
+		//ì´ì „ í•˜ì´ë¼ì´íŠ¸ë¥¼ ì§€ìš´ë‹¤
 		removeHighlights(textComp);
 		
 		try
 	    {
-	        Highlighter hilite = textComp.getHighlighter();	//ÇÏÀÌ¶óÀÌÅÍ »ý¼º
+	        Highlighter hilite = textComp.getHighlighter();	//í•˜ì´ë¼ì´í„° ìƒì„±
 	        Document doc = textComp.getDocument();
 	        String text = doc.getText(0, doc.getLength());
 	        int pos = 0;
 	    
 	        for(String pattern:patternList) {
-	        	// °­Á¶ÇÒ ¹®ÀÚ¿­ÀÇ À§Ä¡¸¦ Ã£´Â´Ù
+	        	// ê°•ì¡°í•  ë¬¸ìžì—´ì˜ ìœ„ì¹˜ë¥¼ ì°¾ëŠ”ë‹¤
 	        	// see I have updated now its not case sensitive 
 	        	while ((pos = text.indexOf(pattern, pos)) >= 0)
 	        	{
-	        		// °­Á¶ Ç¥½Ã¸¦ ÇÑ´Ù using private painter and apply around pattern
+	        		// ê°•ì¡° í‘œì‹œë¥¼ í•œë‹¤ using private painter and apply around pattern
 	        		hilite.addHighlight(pos, pos+pattern.length(), myHighlightPainter);
 	        		pos += pattern.length();
 	        	}

@@ -6,10 +6,18 @@
     <file url="file://$PROJECT_DIR$/src" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Main_Gui.java" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/src/zoas_4/DataClass/JsonConverter.java" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/src/zoas_5/Zoas.java" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/src/zoas_5/Allnote.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/zoas_5/Home.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/zoas_5/HttpUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/zoas_5/Login.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/zoas_5/Newnote.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/zoas_5/NoteForm.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/zoas_5/Record.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/zoas_5/Zoas.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/zoas_5/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/zoas_5/resources/hello-view.fxml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/zoas_5/zoomConnect.java" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/src/zoas_5/textHighlighter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/zoas_5/zoomConnect.java" charset="UTF-8" />
     <file url="PROJECT" charset="x-windows-949" />
   </component>
 </project>

@@ -10,12 +10,12 @@ import javax.swing.*;
 import zoas_5.DataClass.NoteInfo;
 
 public class Home extends JPanel {
-	JLabel lb1 = new JLabel("ÃÖ±Ù ³ëÆ®");
-	JLabel lb2 = new JLabel("ÀÌ¸§");
-	JLabel lb3 = new JLabel("¸¶Áö¸· ¼öÁ¤ ÀÏÀÚ");
-	JLabel lb4 = new JLabel();	//³ëÆ® ÀÌ¸§
+	JLabel lb1 = new JLabel("ìµœê·¼ ë…¸íŠ¸");
+	JLabel lb2 = new JLabel("ì´ë¦„");
+	JLabel lb3 = new JLabel("ë§ˆì§€ë§‰ ìˆ˜ì • ì¼ì");
+	JLabel lb4 = new JLabel();	//ë…¸íŠ¸ ì´ë¦„
 	JLabel lb4_icon = new JLabel("");	
-	JLabel lb5 = new JLabel();	//³ëÆ® ¼öÁ¤ ³¯Â¥
+	JLabel lb5 = new JLabel();	//ë…¸íŠ¸ ìˆ˜ì • ë‚ ì§œ
 	
 	JPanel linepanel = new JPanel();
 	JPanel notepanel = new JPanel();
@@ -24,7 +24,7 @@ public class Home extends JPanel {
 	
 	public void noteupdate() {
 		ArrayList<NoteInfo> notelist=Zoas.user.getNoteList();
-		int notes=notelist.size();	//³ëÆ® ¹è¿­ÀÇ °³¼ö
+		int notes=notelist.size();	//ë…¸íŠ¸ ë°°ì—´ì˜ ê°œìˆ˜
 		if(notes>0) {
 			lb4.setText(notelist.get(notes-1).getName());
 			lb5.setText(notelist.get(notes-1).getEditDate());
@@ -42,13 +42,13 @@ public class Home extends JPanel {
 		setBounds(144, 0, 840, 611);
 		
 		notepanel.addMouseListener(new MouseListener() {
-			@Override//¸¶¿ì½º°¡ ¹öÆ° ¾ÈÀ¸·Î µé¾î¿À¸é
+			@Override//ë§ˆìš°ìŠ¤ê°€ ë²„íŠ¼ ì•ˆìœ¼ë¡œ ë“¤ì–´ì˜¤ë©´
 		    public void mouseEntered(MouseEvent e) {
 		    	JPanel p = (JPanel)e.getSource();
 		        p.setBackground(SystemColor.inactiveCaptionBorder);
 		    }
 
-		    @Override//¸¶¿ì½º°¡ ¹öÆ° ¹ÛÀ¸·Î ³ª°¡¸é 
+		    @Override//ë§ˆìš°ìŠ¤ê°€ ë²„íŠ¼ ë°–ìœ¼ë¡œ ë‚˜ê°€ë©´ 
 		    public void mouseExited(MouseEvent e) {
 		    	JPanel p = (JPanel)e.getSource();        
 		    	p.setBackground(Color.WHITE);
@@ -85,33 +85,33 @@ public class Home extends JPanel {
 		lb1.setForeground(Color.GRAY);
 		lb1.setBackground(Color.BLACK);
 				
-		//'ÃÖ±Ù³ëÆ®'
-		lb1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 17));
+		//'ìµœê·¼ë…¸íŠ¸'
+		lb1.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 17));
 		lb1.setBounds(15, 20, 81, 24);
 		add(lb1);
 				
-		//'ÀÌ¸§'
-		lb2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		//'ì´ë¦„'
+		lb2.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 14));
 		lb2.setBounds(15, 60, 57, 15);
 		add(lb2);
 				
-		//'¸¶Áö¸· ¼öÁ¤ ÀÏÀÚ'
-		lb3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		//'ë§ˆì§€ë§‰ ìˆ˜ì • ì¼ì'
+		lb3.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 14));
 		lb3.setBounds(701, 60, 115, 15);
 		add(lb3);
 				
-		//³ëÆ® ÀÌ¸§
-		lb4.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		//ë…¸íŠ¸ ì´ë¦„
+		lb4.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 14));
 		lb4.setBounds(29, 1, 400, 30);
 		notepanel.add(lb4);
 		
-		//³ëÆ® ¾ÆÀÌÄÜ
+		//ë…¸íŠ¸ ì•„ì´ì½˜
 		noteicon=Zoas.imageSetSize(noteicon, 20, 20);
 		lb4_icon.setBounds(6, 5, 25, 25);
 		notepanel.add(lb4_icon);
 				
-		//³ëÆ® ¼öÁ¤ ³¯Â¥
-		lb5.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
+		//ë…¸íŠ¸ ìˆ˜ì • ë‚ ì§œ
+		lb5.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 13));
 		lb5.setBounds(640, 2, 170, 30);
 		notepanel.add(lb5);
 		

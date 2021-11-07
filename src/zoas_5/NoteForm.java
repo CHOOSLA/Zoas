@@ -13,23 +13,23 @@ import zoas_5.DataClass.NoteInfo;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-//³ëÆ®¸¦ ¿­¸é ¶ß´Â Ã¢ ¼­¹ö¿¡¼­ ÅØ½ºÆ®¸¦ ºÒ·¯¿È
+//ë…¸íŠ¸ë¥¼ ì—´ë©´ ëœ¨ëŠ” ì°½ ì„œë²„ì—ì„œ í…ìŠ¤íŠ¸ë¥¼ ë¶ˆëŸ¬ì˜´
 public class NoteForm extends JPanel {
 	NoteInfo noteinfo;
 	ArrayList<NoteInfo> notelist;
-	ArrayList<String> keyword= new ArrayList<>();	//¿ä¾à Å°¿öµå ÀúÀå	
+	ArrayList<String> keyword= new ArrayList<>();	//ìš”ì•½ í‚¤ì›Œë“œ ì €ì¥	
 	textHighlighter highlighter =new textHighlighter();
 
 	JPanel linepanel_w = new JPanel();
 	JPanel linepanel_h = new JPanel();
 	
-	JLabel lblNewLabel_3 = new JLabel("À½¼º ±â·Ï");
-	JLabel lblNewLabel_4 = new JLabel("¿ä¾à");
+	JLabel lblNewLabel_3 = new JLabel("ìŒì„± ê¸°ë¡");
+	JLabel lblNewLabel_4 = new JLabel("ìš”ì•½");
 	JLabel noteDateLabel = new JLabel();
 	
 	JTextField noteNameField = new JTextField(){
 		 @Override public void setBorder(Border border) {
-		        // ÅØ½ºÆ®ÇÊµå ¿Ü°û¼± Á¦°Å
+		        // í…ìŠ¤íŠ¸í•„ë“œ ì™¸ê³½ì„  ì œê±°
 		    }
 	};
 	
@@ -51,7 +51,7 @@ public class NoteForm extends JPanel {
 		setLayout(null);
 		setVisible(false);
 		
-		//³ëÆ® ÀÌ¸§ 
+		//ë…¸íŠ¸ ì´ë¦„ 
 		noteNameField.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -65,46 +65,46 @@ public class NoteForm extends JPanel {
 				
 			}
 		});	
-		noteNameField.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 17));
+		noteNameField.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 17));
 		noteNameField.setBounds(14, 25, 200, 22);
 		add(noteNameField);
 		noteNameField.setColumns(10);
 				
-		//³¯Â¥
-		noteDateLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
+		//ë‚ ì§œ
+		noteDateLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 11));
 		noteDateLabel.setBounds(14, 46, 150, 15);
 		add(noteDateLabel);
 			
-		//°¡·Î¼±À» À§ÇÑ ÆĞ³Î(ÀÌ¹ÌÁö·Î ¹Ù²ãµµ µÉµí...?)
+		//ê°€ë¡œì„ ì„ ìœ„í•œ íŒ¨ë„(ì´ë¯¸ì§€ë¡œ ë°”ê¿”ë„ ë ë“¯...?)
 		linepanel_w.setBackground(Color.LIGHT_GRAY);
 		linepanel_w.setBounds(12, 71, 815, 2);
 		add(linepanel_w);
 		
-		//¼¼·Î¼±À» À§ÇÑ ÆĞ³Î(ÀÌ¹ÌÁö·Î ¹Ù²ãµµ µÉµí...?)
+		//ì„¸ë¡œì„ ì„ ìœ„í•œ íŒ¨ë„(ì´ë¯¸ì§€ë¡œ ë°”ê¿”ë„ ë ë“¯...?)
 		linepanel_h.setBackground(Color.LIGHT_GRAY);
 		linepanel_h.setBounds(458, 72, 2, 600);
 		add(linepanel_h);
 		
-		//'À½¼º ±â·Ï'
+		//'ìŒì„± ê¸°ë¡'
 		lblNewLabel_3.setBounds(15, 79, 67, 15);
-		lblNewLabel_3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+		lblNewLabel_3.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15));
 		add(lblNewLabel_3);
 		
-		//'¿ä¾à'
+		//'ìš”ì•½'
 		lblNewLabel_4.setBounds(470, 77, 45, 15);
-		lblNewLabel_4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+		lblNewLabel_4.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15));
 		add(lblNewLabel_4);
 		
-		//±â·Ï
-		recordtextPane.setText("ÀÌ ¹®¼­´Â ¾ÆÁ÷ ¿ä¾àÇÏÁö ¾ÊÀº ¹®¼­ÀÌ´Ù. ÀÌÁ¦ºÎÅÍ ¿ä¾àÀ» ÇØº¸ÀÚ! ¾î¶² ¹®ÀåÀ» ¿ä¾àÇÒÁö´Â ³» ¸¾ÀÌ´Ù. ¹è°íÇÁ´Ù.");
+		//ê¸°ë¡
+		recordtextPane.setText("ì´ ë¬¸ì„œëŠ” ì•„ì§ ìš”ì•½í•˜ì§€ ì•Šì€ ë¬¸ì„œì´ë‹¤. ì´ì œë¶€í„° ìš”ì•½ì„ í•´ë³´ì! ì–´ë–¤ ë¬¸ì¥ì„ ìš”ì•½í• ì§€ëŠ” ë‚´ ë§˜ì´ë‹¤. ë°°ê³ í”„ë‹¤.");
 		recordtextPane.setBounds(15, 102, 435, 499);
 		add(recordtextPane);
 		
-		//¿ä¾à
+		//ìš”ì•½
 		summaryTextPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				String s=summaryTextPane.getSelectedText();	//TextArea»óÀÇ ¼±ÅÃºÎºĞ ÅØ½ºÆ®¸¦ ¾ò¾î¿È
+				String s=summaryTextPane.getSelectedText();	//TextAreaìƒì˜ ì„ íƒë¶€ë¶„ í…ìŠ¤íŠ¸ë¥¼ ì–»ì–´ì˜´
 				if(s!=null) {	
 					keyword.add(s);
 					highlighter.highlightKeyword(recordtextPane,keyword);
@@ -114,15 +114,15 @@ public class NoteForm extends JPanel {
 				}
 			}
 		});
-		summaryTextPane.setText("ÀÌÁ¦ºÎÅÍ ¿ä¾àÀ» ÇØº¸ÀÚ! ¹è°íÇÁ´Ù.");
+		summaryTextPane.setText("ì´ì œë¶€í„° ìš”ì•½ì„ í•´ë³´ì! ë°°ê³ í”„ë‹¤.");
 		summaryTextPane.setBounds(470, 310, 356, 290);
 		add(summaryTextPane);
 		
-		keyword.add("¿ä¾à");
-		keyword.add("¹è°íÇÁ´Ù");
+		keyword.add("ìš”ì•½");
+		keyword.add("ë°°ê³ í”„ë‹¤");
 		highlighter.highlightKeyword(recordtextPane,keyword);
 		
-		//¿ä¾à »çÁø ³ÖÀ» ·¹ÀÌºí
+		//ìš”ì•½ ì‚¬ì§„ ë„£ì„ ë ˆì´ë¸”
 		lblNewLabel.setBounds(468, 102, 200, 200);
 		icon=Zoas.imageSetSize(icon, 49, 49);
 		lblNewLabel.setIcon(icon);

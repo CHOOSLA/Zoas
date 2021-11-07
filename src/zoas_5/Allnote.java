@@ -17,9 +17,9 @@ import javax.swing.border.EmptyBorder;
 
 public class Allnote extends JPanel implements MouseListener {
 	
-	JLabel lb1 = new JLabel("ÀüÃ¼ ³ëÆ®");
-	JLabel lb2 = new JLabel("ÀÌ¸§");
-	JLabel lb3 = new JLabel("¸¶Áö¸· ¼öÁ¤ ÀÏÀÚ");
+	JLabel lb1 = new JLabel("ì „ì²´ ë…¸íŠ¸");
+	JLabel lb2 = new JLabel("ì´ë¦„");
+	JLabel lb3 = new JLabel("ë§ˆì§€ë§‰ ìˆ˜ì • ì¼ì");
 	
 	JPanel panel = new JPanel();
 	JScrollPane scrollPane = new JScrollPane(panel);
@@ -29,12 +29,12 @@ public class Allnote extends JPanel implements MouseListener {
 	
 	public void noteupdate() {
 		ArrayList<NoteInfo> notelist=Zoas.user.getNoteList();
-		int notes=notelist.size();	//³ëÆ® ¹è¿­ÀÇ °³¼ö
+		int notes=notelist.size();	//ë…¸íŠ¸ ë°°ì—´ì˜ ê°œìˆ˜
 		
-		JLabel[] lb4=new JLabel[notes];	//³ëÆ® ÀÌ¸§
-		JLabel[] lb4_icon=new JLabel[notes] ;			//³ëÆ® ¾ÆÀÌÄÜ
-		JLabel[] lb5=new JLabel[notes];	//³ëÆ® ¼öÁ¤ ³¯Â¥
-		JPanel[] notepanel=new JPanel[notes];	//°¢ ³ëÆ® ÆĞ³Î
+		JLabel[] lb4=new JLabel[notes];	//ë…¸íŠ¸ ì´ë¦„
+		JLabel[] lb4_icon=new JLabel[notes] ;			//ë…¸íŠ¸ ì•„ì´ì½˜
+		JLabel[] lb5=new JLabel[notes];	//ë…¸íŠ¸ ìˆ˜ì • ë‚ ì§œ
+		JPanel[] notepanel=new JPanel[notes];	//ê° ë…¸íŠ¸ íŒ¨ë„
 		
 		for(int i=0;i<notes;i++) {
 			notepanel[i]=new JPanel(); 
@@ -44,21 +44,21 @@ public class Allnote extends JPanel implements MouseListener {
 			panel.add(notepanel[i]);
 			notepanel[i].addMouseListener(this);
 			
-			//³ëÆ® ÀÌ¸§
+			//ë…¸íŠ¸ ì´ë¦„
 			lb4[i]=new JLabel(notelist.get(i).getName());
-			lb4[i].setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+			lb4[i].setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 14));
 			lb4[i].setBounds(29, 1, 400, 30);
 			notepanel[i].add(lb4[i]);
 			
-			//³ëÆ® ¾ÆÀÌÄÜ
+			//ë…¸íŠ¸ ì•„ì´ì½˜
 			lb4_icon[i]=new JLabel();
 			lb4_icon[i].setBounds(6, 5, 25, 25);
 			lb4_icon[i].setIcon(noteicon);
 			notepanel[i].add(lb4_icon[i]);
 			
-			//³ëÆ® ¼öÁ¤ ³¯Â¥
+			//ë…¸íŠ¸ ìˆ˜ì • ë‚ ì§œ
 			lb5[i]=new JLabel(notelist.get(i).getEditDate());
-			lb5[i].setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
+			lb5[i].setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 13));
 			lb5[i].setBounds(630, 2, 170, 30);
 			notepanel[i].add(lb5[i]);
 		}
@@ -77,18 +77,18 @@ public class Allnote extends JPanel implements MouseListener {
 		lb1.setForeground(Color.GRAY);
 		lb1.setBounds(15, 20, 81, 24);
 				
-		//'ÃÖ±Ù³ëÆ®'
-		lb1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 17));
+		//'ìµœê·¼ë…¸íŠ¸'
+		lb1.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 17));
 		add(lb1);
 		lb2.setBounds(15, 60, 57, 15);
 				
-		//'ÀÌ¸§'
-		lb2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		//'ì´ë¦„'
+		lb2.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 14));
 		add(lb2);
 		lb3.setBounds(710, 60, 115, 15);
 				
-		//'¸¶Áö¸· ¼öÁ¤ ÀÏÀÚ'
-		lb3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		//'ë§ˆì§€ë§‰ ìˆ˜ì • ì¼ì'
+		lb3.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 14));
 		add(lb3);
 		panel.setBackground(Color.WHITE);
 		

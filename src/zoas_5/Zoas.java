@@ -1,10 +1,10 @@
 package zoas_5;
-/*Ãß°¡ÇÒ °Íµé
- * 1. °­ÀÇ ¿¬°áÇÏ±â ¹öÆ° ´©¸£¸é ÁÜ ¿¬°áÀ» ÇØ¾ßÇÏ´Âµ¥  json Çì´õ¿¡ ¹» ºÙ¿©¼­ ¼­¹ö¿¡ º¸³»Áà¾ßÇÔ
- * 2. µ¿¿µ»ó Ã¢ ¿¬°á
- * 3. ³ëÆ®¸¦ ´©¸£¸é ¼­¹ö¿¡ °­ÀÇ ¾ÆÀÌµğ(°­ÀÇ ¹øÈ£,³ëÆ®ÀÌ¸§...?)¸¦ º¸³»¼­ textÆÄÀÏÀ» ¹Ş´Â´Ù. ÀÌ°É ¹Ş¾Æ¼­ ³ëÆ®¿¡ ÀÔ·ÂÇØÁà¾ß ÇÔ
- * 		ÅØ½ºÆ® ÆÄÀÏ ÀĞ´Â°Å Ã£¾ÆºÁ¾ßÇÔ
- * 4. ³ëÆ® »ı¼º½Ã°£ ,¼öÁ¤½Ã°£Àº ¼­¹ö¿¡ ÀúÀåµÇ´Â°Ô ¾Æ´Ï¹Ç·Î»õ³ëÆ® »ı¼º½Ã¿¡ Àß ÀúÀåÇØµÎ¾î¾ßÇÒµí?¾Æ´Ï¸é DB¿¡ ÀúÀåÇÒ ¼ö ÀÖ³ª??*/
+/*ì¶”ê°€í•  ê²ƒë“¤
+ * 1. ê°•ì˜ ì—°ê²°í•˜ê¸° ë²„íŠ¼ ëˆ„ë¥´ë©´ ì¤Œ ì—°ê²°ì„ í•´ì•¼í•˜ëŠ”ë°  json í—¤ë”ì— ë­˜ ë¶™ì—¬ì„œ ì„œë²„ì— ë³´ë‚´ì¤˜ì•¼í•¨
+ * 2. ë™ì˜ìƒ ì°½ ì—°ê²°
+ * 3. ë…¸íŠ¸ë¥¼ ëˆ„ë¥´ë©´ ì„œë²„ì— ê°•ì˜ ì•„ì´ë””(ê°•ì˜ ë²ˆí˜¸,ë…¸íŠ¸ì´ë¦„...?)ë¥¼ ë³´ë‚´ì„œ textíŒŒì¼ì„ ë°›ëŠ”ë‹¤. ì´ê±¸ ë°›ì•„ì„œ ë…¸íŠ¸ì— ì…ë ¥í•´ì¤˜ì•¼ í•¨
+ * 		í…ìŠ¤íŠ¸ íŒŒì¼ ì½ëŠ”ê±° ì°¾ì•„ë´ì•¼í•¨
+ * 4. ë…¸íŠ¸ ìƒì„±ì‹œê°„ ,ìˆ˜ì •ì‹œê°„ì€ ì„œë²„ì— ì €ì¥ë˜ëŠ”ê²Œ ì•„ë‹ˆë¯€ë¡œìƒˆë…¸íŠ¸ ìƒì„±ì‹œì— ì˜ ì €ì¥í•´ë‘ì–´ì•¼í• ë“¯?ì•„ë‹ˆë©´ DBì— ì €ì¥í•  ìˆ˜ ìˆë‚˜??*/
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -39,42 +39,42 @@ public class Zoas extends JFrame  {
 	static CardLayout mainCard=new CardLayout();
 	static CardLayout laftCard=new CardLayout();
 	
-	JPanel Main_panel = new JPanel();	//È¨È­¸é(ÃÖ±Ù³ëÆ®)
+	JPanel Main_panel = new JPanel();	//í™ˆí™”ë©´(ìµœê·¼ë…¸íŠ¸)
 	Login Login_p= new Login();	
 	JPanel Manu_p = new JPanel();
-	JPanel M_panel1 = new JPanel();	//¸Ş´º¿¡ ºÙÀº ¹öÆ°
+	JPanel M_panel1 = new JPanel();	//ë©”ë‰´ì— ë¶™ì€ ë²„íŠ¼
 	
 	static public JPanel left_panel = new JPanel();
-	static Home Home_p= new Home();	// ÃÖ±Ù ³ëÆ® ÆĞ³Î
-	static Newnote Newnote_p = new Newnote();	// »õ ³ëÆ® ÆĞ³Î
-	static Record Record_p = new Record();	// ±â·Ï ÆĞ³Î
-	static Allnote Allnote_p=new Allnote();	// ÀüÃ¼ ³ëÆ® ÆĞ³Î
-	static NoteForm noteform_p=new NoteForm();	// ³ëÆ® ±âº» ¹è°æ(?)
+	static Home Home_p= new Home();	// ìµœê·¼ ë…¸íŠ¸ íŒ¨ë„
+	static Newnote Newnote_p = new Newnote();	// ìƒˆ ë…¸íŠ¸ íŒ¨ë„
+	static Record Record_p = new Record();	// ê¸°ë¡ íŒ¨ë„
+	static Allnote Allnote_p=new Allnote();	// ì „ì²´ ë…¸íŠ¸ íŒ¨ë„
+	static NoteForm noteform_p=new NoteForm();	// ë…¸íŠ¸ ê¸°ë³¸ ë°°ê²½(?)
 	
-	JButton newNoteBtn = new JButton("»õ ³ëÆ® ¸¸µé±â");
-	JButton zoasBtn = new JButton("ZOAS");	//È¨ ÀÌµ¿ ¹öÆ°
+	JButton newNoteBtn = new JButton("ìƒˆ ë…¸íŠ¸ ë§Œë“¤ê¸°");
+	JButton zoasBtn = new JButton("ZOAS");	//í™ˆ ì´ë™ ë²„íŠ¼
 	
-	JLabel label1 = new JLabel("ÀüÃ¼ ³ëÆ®");	
+	JLabel label1 = new JLabel("ì „ì²´ ë…¸íŠ¸");	
 	JLabel label1_Icon = new JLabel("",JLabel.CENTER);
 	
 	ImageIcon allnoteicon= new ImageIcon("image/note.png");
 	
 	
 	public void setPanel() {
-		//¸ŞÀÎÆĞ³Î
+		//ë©”ì¸íŒ¨ë„
 		Main_panel.setBounds(0, 0, 984, 611);
 		Main_panel.setLayout(null);
 		Main_panel.setBackground(Color.WHITE);
 		
-		//¿ŞÂÊ ¸Ş´º ÆĞ³Î
+		//ì™¼ìª½ ë©”ë‰´ íŒ¨ë„
 		Manu_p.setBackground(SystemColor.activeCaption);
 		Manu_p.setBounds(0, 0, 144, 611);
 		Main_panel.add(Manu_p);
 		Manu_p.setLayout(null);
 	
-		//¸Ş´ºÀÇ ÀüÃ¼³ëÆ®(¹öÆ°Ã³·³ »ç¿ë)
+		//ë©”ë‰´ì˜ ì „ì²´ë…¸íŠ¸(ë²„íŠ¼ì²˜ëŸ¼ ì‚¬ìš©)
 		M_panel1.addMouseListener(new MouseListener() {
-			@Override//¸¶¿ì½º ´©¸¦ ¶§
+			@Override//ë§ˆìš°ìŠ¤ ëˆ„ë¥¼ ë•Œ
 		    public void mouseClicked(MouseEvent e) {
 				String strUrl="http://zoas.sch.ac.kr:8000/zoas-api/participation/";
 				String jsonStr= Zoas.json.particiJsonstr(user);
@@ -83,16 +83,16 @@ public class Zoas extends JFrame  {
 //				JsonElement element = JsonParser.parseString(responseString);
 //				Zoas.user.setkey(element.getAsJsonObject().get("key").getAsString());
 				
-				Allnote_p.noteupdate();	//³ëÆ® ¸®½ºÆ® ¾÷µ¥ÀÌÆ®
+				Allnote_p.noteupdate();	//ë…¸íŠ¸ ë¦¬ìŠ¤íŠ¸ ì—…ë°ì´íŠ¸
 				laftCard.show(left_panel, "AllNote");
 		    }
-			@Override//¸¶¿ì½º°¡ ¹öÆ° ¾ÈÀ¸·Î µé¾î¿À¸é
+			@Override//ë§ˆìš°ìŠ¤ê°€ ë²„íŠ¼ ì•ˆìœ¼ë¡œ ë“¤ì–´ì˜¤ë©´
 		    public void mouseEntered(MouseEvent e) {
 		    	JPanel p = (JPanel)e.getSource();
 		        p.setBackground(Color.WHITE);
 		    }
 
-		    @Override//¸¶¿ì½º°¡ ¹öÆ° ¹ÛÀ¸·Î ³ª°¡¸é 
+		    @Override//ë§ˆìš°ìŠ¤ê°€ ë²„íŠ¼ ë°–ìœ¼ë¡œ ë‚˜ê°€ë©´ 
 		    public void mouseExited(MouseEvent e) {
 		    	JPanel p = (JPanel)e.getSource();        
 		    	p.setBackground(SystemColor.activeCaption);
@@ -113,13 +113,13 @@ public class Zoas extends JFrame  {
 		M_panel1.setBounds(0, 135, 144, 27);
 		Manu_p.add(M_panel1);
 		
-		//¿ŞÂÊ ÆĞ³Î(³ëÆ® º¸ÀÌ´Â °÷)
+		//ì™¼ìª½ íŒ¨ë„(ë…¸íŠ¸ ë³´ì´ëŠ” ê³³)
 		left_panel.setBackground(Color.WHITE);
 		left_panel.setBounds(144, 0, 840, 611);
 		Main_panel.add(left_panel);
 		left_panel.setLayout(laftCard);
 		
-			//card layoutÀ» À§ÇÑ ¼³Á¤
+			//card layoutì„ ìœ„í•œ ì„¤ì •
 		frame.getContentPane().add("Main",Main_panel);
 		frame.getContentPane().add("Login",Login_p);
 		mainCard.show(frame.getContentPane(),"Login");
@@ -133,22 +133,22 @@ public class Zoas extends JFrame  {
 	}
 	
 	public void setBtn() {
-		//»õ ³ëÆ® ¸¸µé±â ¹öÆ° ¼³Á¤
+		//ìƒˆ ë…¸íŠ¸ ë§Œë“¤ê¸° ë²„íŠ¼ ì„¤ì •
 		newNoteBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//È­¸é ÀüÈ¯ÇÏ±â Àü¿¡ ÃÊ±âÈ­
+				//í™”ë©´ ì „í™˜í•˜ê¸° ì „ì— ì´ˆê¸°í™”
 				Newnote_p.set();	
 				laftCard.show(left_panel, "NewNote");
 			}
 		});
 		newNoteBtn.setBounds(16, 80, 116, 36);
-		newNoteBtn.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+		newNoteBtn.setFont(new Font("ë§‘ì€ ê³ ë”• Semilight", Font.PLAIN, 12));
 		newNoteBtn.setBackground(Color.WHITE);
-		newNoteBtn.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¼³Á¤ÇØÁ¦
-		newNoteBtn.setFocusPainted(false);	// ¹öÆ° Æ÷Ä¿½º ¼³Á¤ÇØÁ¦
+		newNoteBtn.setBorderPainted(false); // ë²„íŠ¼ í…Œë‘ë¦¬ ì„¤ì •í•´ì œ
+		newNoteBtn.setFocusPainted(false);	// ë²„íŠ¼ í¬ì»¤ìŠ¤ ì„¤ì •í•´ì œ
 		Manu_p.add(newNoteBtn);
 		
-		//ZOAS ¹öÆ° ¼³Á¤
+		//ZOAS ë²„íŠ¼ ì„¤ì •
 		zoasBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Home_p.noteupdate();
@@ -156,18 +156,18 @@ public class Zoas extends JFrame  {
 			}
 		});
 		zoasBtn.setForeground(Color.WHITE);
-		zoasBtn.setFont(new Font("ÈŞ¸ÕµÕ±ÙÇìµå¶óÀÎ", Font.BOLD, 25));
+		zoasBtn.setFont(new Font("íœ´ë¨¼ë‘¥ê·¼í—¤ë“œë¼ì¸", Font.BOLD, 25));
 		zoasBtn.setBackground(Color.LIGHT_GRAY);
 		zoasBtn.setBounds(7, 20, 128, 50);
-		zoasBtn.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¼³Á¤ÇØÁ¦
-		zoasBtn.setContentAreaFilled(false);	// ¹öÆ° Ã¤¿ì±â ¼³Á¤ÇØÁ¦
-		zoasBtn.setFocusPainted(false);	// ¹öÆ° Æ÷Ä¿½º ¼³Á¤ÇØÁ¦
+		zoasBtn.setBorderPainted(false); // ë²„íŠ¼ í…Œë‘ë¦¬ ì„¤ì •í•´ì œ
+		zoasBtn.setContentAreaFilled(false);	// ë²„íŠ¼ ì±„ìš°ê¸° ì„¤ì •í•´ì œ
+		zoasBtn.setFocusPainted(false);	// ë²„íŠ¼ í¬ì»¤ìŠ¤ ì„¤ì •í•´ì œ
 		Manu_p.add(zoasBtn);
 				
-		//°­ÀÇ ¿¬°áÇÏ±â ¹öÆ°
+		//ê°•ì˜ ì—°ê²°í•˜ê¸° ë²„íŠ¼
 		Newnote_p.ZoomBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//ÁÜ ¿¬°áÇÏ±â Ã¢ ¶ä
+				//ì¤Œ ì—°ê²°í•˜ê¸° ì°½ ëœ¸
 				zoomConnect zoom=new zoomConnect();
 				zoom.main(null);
 			}
@@ -176,20 +176,20 @@ public class Zoas extends JFrame  {
 	}
 	
 	public void setLabel() {
-		//³ëÆ® ¾ÆÀÌÄÜ 
+		//ë…¸íŠ¸ ì•„ì´ì½˜ 
 		allnoteicon=imageSetSize(allnoteicon, 15, 15);
 		label1_Icon.setIcon(allnoteicon);
 		label1_Icon.setBounds(17, 4, 19, 19);
 		M_panel1.add(label1_Icon);
 		
-		//'ÀüÃ¼³ëÆ®'
-		label1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		//'ì „ì²´ë…¸íŠ¸'
+		label1.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 14));
 		label1.setBackground(Color.LIGHT_GRAY);
 		label1.setBounds(40, 1, 90, 24);
 		M_panel1.add(label1);		
 	}
 	
-	//ÀÌ¹ÌÁö Å©±â º¯È¯ ÇÔ¼ö
+	//ì´ë¯¸ì§€ í¬ê¸° ë³€í™˜ í•¨ìˆ˜
 	public static ImageIcon imageSetSize(ImageIcon icon, int w, int h) {
 		Image img=icon.getImage();	
 		Image changedimg=img.getScaledInstance(w,h,Image.SCALE_DEFAULT);

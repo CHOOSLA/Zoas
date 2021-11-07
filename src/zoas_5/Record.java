@@ -16,13 +16,13 @@ public class Record extends JPanel {
 	JPanel linepanel_w = new JPanel();
 	JPanel linepanel_h = new JPanel();
 	
-	JLabel lblNewLabel_3 = new JLabel("À½¼º ±â·Ï");
-	JLabel lblNewLabel_4 = new JLabel("¿ä¾à");
+	JLabel lblNewLabel_3 = new JLabel("ìŒì„± ê¸°ë¡");
+	JLabel lblNewLabel_4 = new JLabel("ìš”ì•½");
 	JLabel noteDateLabel = new JLabel();
 	
 	JTextField noteNameField = new JTextField(){
 		 @Override public void setBorder(Border border) {
-		        // ÅØ½ºÆ®ÇÊµå ¿Ü°û¼± Á¦°Å
+		        // í…ìŠ¤íŠ¸í•„ë“œ ì™¸ê³½ì„  ì œê±°
 		    }
 	};
 	
@@ -39,8 +39,8 @@ public class Record extends JPanel {
 		RecordtextArea.setText(noteinfo.getRecordText());
 		SummarytextArea.setText(noteinfo.getSummaryText());
 		
-		notelist.add(noteinfo);	//³ëÆ® ¸®½ºÆ®¿¡ ³ëÆ®°¡ Ãß°¡µÈ´Ù.
-		Zoas.user.setNoteList(notelist);	//ÃÖÁ¾ ³ëÆ® ¸®½ºÆ®	
+		notelist.add(noteinfo);	//ë…¸íŠ¸ ë¦¬ìŠ¤íŠ¸ì— ë…¸íŠ¸ê°€ ì¶”ê°€ëœë‹¤.
+		Zoas.user.setNoteList(notelist);	//ìµœì¢… ë…¸íŠ¸ ë¦¬ìŠ¤íŠ¸	
 		Zoas.json.ObjectToJson(Zoas.user);
 		
 	}
@@ -53,7 +53,7 @@ public class Record extends JPanel {
 		setLayout(null);
 		setVisible(false);
 		
-		//³ëÆ® ÀÌ¸§ 
+		//ë…¸íŠ¸ ì´ë¦„ 
 		noteNameField.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -67,44 +67,44 @@ public class Record extends JPanel {
 				
 			}
 		});	
-		noteNameField.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 17));
+		noteNameField.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 17));
 		noteNameField.setBounds(14, 25, 200, 22);
 		add(noteNameField);
 		noteNameField.setColumns(10);
 				
-		//³¯Â¥
-		noteDateLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
+		//ë‚ ì§œ
+		noteDateLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 11));
 		noteDateLabel.setBounds(14, 46, 150, 15);
 		add(noteDateLabel);
 			
-		//°¡·Î¼±À» À§ÇÑ ÆĞ³Î(ÀÌ¹ÌÁö·Î ¹Ù²ãµµ µÉµí...?)
+		//ê°€ë¡œì„ ì„ ìœ„í•œ íŒ¨ë„(ì´ë¯¸ì§€ë¡œ ë°”ê¿”ë„ ë ë“¯...?)
 		linepanel_w.setBackground(Color.LIGHT_GRAY);
 		linepanel_w.setBounds(12, 71, 815, 2);
 		add(linepanel_w);
 		
-		//¼¼·Î¼±À» À§ÇÑ ÆĞ³Î(ÀÌ¹ÌÁö·Î ¹Ù²ãµµ µÉµí...?)
+		//ì„¸ë¡œì„ ì„ ìœ„í•œ íŒ¨ë„(ì´ë¯¸ì§€ë¡œ ë°”ê¿”ë„ ë ë“¯...?)
 		linepanel_h.setBackground(Color.LIGHT_GRAY);
 		linepanel_h.setBounds(458, 72, 2, 600);
 		add(linepanel_h);
 		
-		//'À½¼º ±â·Ï'
+		//'ìŒì„± ê¸°ë¡'
 		lblNewLabel_3.setBounds(15, 79, 67, 15);
-		lblNewLabel_3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+		lblNewLabel_3.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15));
 		add(lblNewLabel_3);
 		
-		//À½¼º ±â·Ï °ø°£
+		//ìŒì„± ê¸°ë¡ ê³µê°„
 		RecordtextArea.setBounds(15, 102, 435, 499);
-		RecordtextArea.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		RecordtextArea.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 12));
 		add(RecordtextArea);
 		
-		//'¿ä¾à'
+		//'ìš”ì•½'
 		lblNewLabel_4.setBounds(470, 77, 45, 15);
-		lblNewLabel_4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+		lblNewLabel_4.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15));
 		add(lblNewLabel_4);
 		
-		//¿ä¾à °ø°£
+		//ìš”ì•½ ê³µê°„
 		SummarytextArea.setLineWrap(true);
-		SummarytextArea.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		SummarytextArea.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 12));
 		SummarytextArea.setBounds(470, 310, 360, 290);
 		add(SummarytextArea);
 		panel.setBounds(468, 102, 200, 200);

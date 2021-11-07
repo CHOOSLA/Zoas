@@ -30,28 +30,28 @@ import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
 
 public class Login extends JPanel {
-	String pwPattern = "^(?=.*[a-z])(?=.*[A-Z]).{8,}$"; //ºñ¹Ğ¹øÈ£ Çü½Ä
-	User tempUser=new User();	//ÀÓ½Ã »ç¿ëÀÚ È¸¿ø°¡ÀÔ, ·Î±×ÀÎÀÌ ¼º°øÇÏ¸é ¸ŞÀÎ À¯ÀúÀÎ Zoas À¯Àú °»½ÅÇØÁØ´Ù
+	String pwPattern = "^(?=.*[a-z])(?=.*[A-Z]).{8,}$"; //ë¹„ë°€ë²ˆí˜¸ í˜•ì‹
+	User tempUser=new User();	//ì„ì‹œ ì‚¬ìš©ì íšŒì›ê°€ì…, ë¡œê·¸ì¸ì´ ì„±ê³µí•˜ë©´ ë©”ì¸ ìœ ì €ì¸ Zoas ìœ ì € ê°±ì‹ í•´ì¤€ë‹¤
 	
 	static CardLayout Card=new CardLayout();
-	JPanel panel = new JPanel();	//·Î±×ÀÎÃ¢
-	JPanel panel_2 = new JPanel();	//È¸¿ø°¡ÀÔÃ¢
-	JPanel cardpanel = new JPanel();//Ä«µå ·¹ÀÌ¾Æ¿ôÀ» À§ÇÑ ÆĞ³Î
+	JPanel panel = new JPanel();	//ë¡œê·¸ì¸ì°½
+	JPanel panel_2 = new JPanel();	//íšŒì›ê°€ì…ì°½
+	JPanel cardpanel = new JPanel();//ì¹´ë“œ ë ˆì´ì•„ì›ƒì„ ìœ„í•œ íŒ¨ë„
 	JPanel Btnpanel = new JPanel();
 	JPanel Btnpanel_1 = new JPanel();
 	
-	//·Î±×ÀÎÃ¢ ÅØ½ºÆ®ÇÊµå
+	//ë¡œê·¸ì¸ì°½ í…ìŠ¤íŠ¸í•„ë“œ
 	JTextField txtId= new JTextField() { 
 		@Override public void setBorder(Border border) {
-        // ÅØ½ºÆ®ÇÊµå ¿Ü°û¼± Á¦°Å
+        // í…ìŠ¤íŠ¸í•„ë“œ ì™¸ê³½ì„  ì œê±°
     }};
 	private JPasswordField passwordField=new JPasswordField() {
 		 @Override public void setBorder(Border border) {
-		        // ÅØ½ºÆ®ÇÊµå ¿Ü°û¼± Á¦°Å
+		        // í…ìŠ¤íŠ¸í•„ë“œ ì™¸ê³½ì„  ì œê±°
 		    }
 	};
 	
-	//È¸¿ø°¡ÀÔ Ã¢ ÅØ½ºÆ®ÇÊµå
+	//íšŒì›ê°€ì… ì°½ í…ìŠ¤íŠ¸í•„ë“œ
 	JTextField txtF_username = new JTextField() {
 		 @Override public void setBorder(Border border) {
 		}
@@ -65,16 +65,16 @@ public class Login extends JPanel {
 		}
 	};
 	
-	//·Î±×ÀÎ Ã¢ ³»ºÎ ¹öÆ°
+	//ë¡œê·¸ì¸ ì°½ ë‚´ë¶€ ë²„íŠ¼
 	JButton signupButton = new JButton("Sign Up");
 	JButton loginButton = new JButton("Login");
 	
-	//È¸¿ø°¡ÀÔ Ã¢ ³»ºÎ ¹öÆ°
+	//íšŒì›ê°€ì… ì°½ ë‚´ë¶€ ë²„íŠ¼
 	JButton signupButton_1 = new JButton("Sign Up");
-	JButton backButton = new JButton("µÚ·Î°¡±â");
+	JButton backButton = new JButton("ë’¤ë¡œê°€ê¸°");
 	
-	JLabel lb_1 = new JLabel("");	//»ç¶÷ ÀÌ¹ÌÁö¸¦ À§ÇÑ ·¹ÀÌºí
-	JLabel lb_1_1 = new JLabel("");//»ç¶÷ ÀÌ¹ÌÁö¸¦ À§ÇÑ ·¹ÀÌºí
+	JLabel lb_1 = new JLabel("");	//ì‚¬ëŒ ì´ë¯¸ì§€ë¥¼ ìœ„í•œ ë ˆì´ë¸”
+	JLabel lb_1_1 = new JLabel("");//ì‚¬ëŒ ì´ë¯¸ì§€ë¥¼ ìœ„í•œ ë ˆì´ë¸”
 	
 	ImageIcon icon= new ImageIcon("image/login.png");
 	
@@ -86,7 +86,7 @@ public class Login extends JPanel {
 		setBounds(0, 0, 1000, 650);
 		setLayout(null);
 		
-		//Ä«µå ·¹ÀÌ¾Æ¿ô
+		//ì¹´ë“œ ë ˆì´ì•„ì›ƒ
 		cardpanel.setBounds(215, 81, 550, 400);
 		add(cardpanel);
 		cardpanel.setLayout(Card);	
@@ -94,7 +94,7 @@ public class Login extends JPanel {
 		cardpanel.add(panel_2, "SignUp");
 		Card.show(cardpanel, "Login");
 		
-/*							·Î±×ÀÎ Ã¢ °ü·Ã								*/
+/*							ë¡œê·¸ì¸ ì°½ ê´€ë ¨								*/
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(215, 81, 550, 400);
 		panel.setLayout(null);
@@ -105,71 +105,71 @@ public class Login extends JPanel {
 		lb_1.setBounds(250, 40, 50, 50);
 		panel.add(lb_1);
 		
-		//·Î±×ÀÎÃ¢ÀÇ È¸¿ø°¡ÀÔ ¹öÆ°
+		//ë¡œê·¸ì¸ì°½ì˜ íšŒì›ê°€ì… ë²„íŠ¼
 		signupButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Card.show(cardpanel, "SignUp");
 			}
 		});
 		signupButton.setForeground(SystemColor.activeCaption);
-		signupButton.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
+		signupButton.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 11));
 		signupButton.setBounds(167, 262, 211, 23);
 		
-		//·Î±×ÀÎ ¹öÆ°
+		//ë¡œê·¸ì¸ ë²„íŠ¼
 		loginButton.setForeground(Color.WHITE);
-		loginButton.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		loginButton.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tempUser.setusername(txtId.getText());
 				String pwString= new String(passwordField.getPassword());
 				tempUser.setpassword(pwString);
 				
-				/*·Î±×ÀÎÀ» À§ÇÑ ¼­¹ö Åë½Å*/
+				/*ë¡œê·¸ì¸ì„ ìœ„í•œ ì„œë²„ í†µì‹ */
 				String strUrl="http://zoas.sch.ac.kr:8000/rest-auth/login/";
 				String jsonStr= Zoas.json.loginJsonstr(tempUser);
 				
-				String responseString =Zoas.httpUtil.postRequest(strUrl,jsonStr);	//ÀÀ´ä¹ŞÀº ¹®Àå JSON ÇüÅÂÀÏ °ÍÀÓ
+				String responseString =Zoas.httpUtil.postRequest(strUrl,jsonStr);	//ì‘ë‹µë°›ì€ ë¬¸ì¥ JSON í˜•íƒœì¼ ê²ƒì„
 				if(responseString=="Error!") {	
-					JOptionPane.showMessageDialog(null, "¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä.", "·Î±×ÀÎ ¿À·ù!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”.", "ë¡œê·¸ì¸ ì˜¤ë¥˜!", JOptionPane.ERROR_MESSAGE);
 					txtId.setText("");
 					passwordField.setText("");
 				}
-				else {//ÀÀ´ä ¿À·ù°¡ ¾Æ´Ñ °æ¿ì¿¡¸¸ ·Î±×ÀÎ
+				else {//ì‘ë‹µ ì˜¤ë¥˜ê°€ ì•„ë‹Œ ê²½ìš°ì—ë§Œ ë¡œê·¸ì¸
 					Zoas.user.setusername(tempUser.getusername());
 					Zoas.user.setpassword(tempUser.getpassword());
 					
-					// ÀÀ´ä ¹®ÀÚ¿­ parsing & À¯Àú Å° ÀúÀå
+					// ì‘ë‹µ ë¬¸ìì—´ parsing & ìœ ì € í‚¤ ì €ì¥
 					JsonElement element = JsonParser.parseString(responseString);
 					Zoas.user.setkey(element.getAsJsonObject().get("key").getAsString());
 
-					Zoas.Home_p.noteupdate();	//ÃÖ±Ù ³ëÆ® ¼³Á¤
+					Zoas.Home_p.noteupdate();	//ìµœê·¼ ë…¸íŠ¸ ì„¤ì •
 					Zoas.mainCard.show(Zoas.frame.getContentPane(),"Main");
 				}
 				
 			}
 		});
 		loginButton.setBounds(0, -1, 211, 28);
-		loginButton.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¼³Á¤ÇØÁ¦
-		loginButton.setContentAreaFilled(false);	// ¹öÆ° Ã¤¿ì±â ¼³Á¤ÇØÁ¦
-		loginButton.setFocusPainted(false);	// ¹öÆ° Æ÷Ä¿½º ¼³Á¤ÇØÁ¦
+		loginButton.setBorderPainted(false); // ë²„íŠ¼ í…Œë‘ë¦¬ ì„¤ì •í•´ì œ
+		loginButton.setContentAreaFilled(false);	// ë²„íŠ¼ ì±„ìš°ê¸° ì„¤ì •í•´ì œ
+		loginButton.setFocusPainted(false);	// ë²„íŠ¼ í¬ì»¤ìŠ¤ ì„¤ì •í•´ì œ
 		Btnpanel.setBackground(SystemColor.textHighlight);
 		Btnpanel.setLayout(null);
 		Btnpanel.add(loginButton);
-		txtId.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		txtId.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 12));
 		
-		signupButton.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¼³Á¤ÇØÁ¦
-		signupButton.setContentAreaFilled(false);	// ¹öÆ° Ã¤¿ì±â ¼³Á¤ÇØÁ¦
-		signupButton.setFocusPainted(false);	// ¹öÆ° Æ÷Ä¿½º ¼³Á¤ÇØÁ¦
+		signupButton.setBorderPainted(false); // ë²„íŠ¼ í…Œë‘ë¦¬ ì„¤ì •í•´ì œ
+		signupButton.setContentAreaFilled(false);	// ë²„íŠ¼ ì±„ìš°ê¸° ì„¤ì •í•´ì œ
+		signupButton.setFocusPainted(false);	// ë²„íŠ¼ í¬ì»¤ìŠ¤ ì„¤ì •í•´ì œ
 		panel.add(signupButton);
 		
-		//¾ÆÀÌµğ
+		//ì•„ì´ë””
 		txtId.setBackground(Color.LIGHT_GRAY);
 		txtId.setBounds(220, 146, 160, 21);
 		panel.add(txtId);
 		txtId.setColumns(10);
-		passwordField.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		passwordField.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 12));
 		
-		//ºñ¹Ğ¹øÈ£
+		//ë¹„ë°€ë²ˆí˜¸
 		passwordField.setBackground(Color.LIGHT_GRAY);
 		passwordField.setBounds(220, 181, 160, 21);
 		panel.add(passwordField);
@@ -188,30 +188,30 @@ public class Login extends JPanel {
 		panel_2.setLayout(null);
 		panel_2.setBackground(Color.WHITE);
 		
-/*							È¸¿ø°¡ÀÔ Ã¢ °ü·Ã								*/
+/*							íšŒì›ê°€ì… ì°½ ê´€ë ¨								*/
 		
 		lb_1_1.setBounds(250, 40, 50, 50);
 		panel_2.add(lb_1_1);
 		
-		txtF_username.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		txtF_username.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 12));
 		txtF_username.setColumns(10);
 		txtF_username.setBackground(Color.LIGHT_GRAY);
 		txtF_username.setBounds(241, 137, 150, 21);
 		panel_2.add(txtF_username);
 		passwordField_1.setDragEnabled(true);
 		
-		passwordField_1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		passwordField_1.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 12));
 		passwordField_1.setBackground(Color.LIGHT_GRAY);
 		passwordField_1.setBounds(241, 168, 150, 21);
 		panel_2.add(passwordField_1);
 		passwordField_2.setDragEnabled(true);
 		
-		passwordField_2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		passwordField_2.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 12));
 		passwordField_2.setBackground(Color.LIGHT_GRAY);
 		passwordField_2.setBounds(241, 202, 150, 21);
 		panel_2.add(passwordField_2);
 		
-		//È¸¿ø°¡ÀÔÃ¢ÀÇ sign up ¹öÆ°
+		//íšŒì›ê°€ì…ì°½ì˜ sign up ë²„íŠ¼
 		Btnpanel_1.setLayout(null);
 		Btnpanel_1.setBackground(SystemColor.textHighlight);
 		Btnpanel_1.setBounds(162, 254, 211, 29);
@@ -223,17 +223,17 @@ public class Login extends JPanel {
 				String pw2String= new String(passwordField_2.getPassword());
 				
 				if(!pw1String.equals(pw2String)) {
-					JOptionPane.showMessageDialog(null, "ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.", "¿À·ù!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.", "ì˜¤ë¥˜!", JOptionPane.ERROR_MESSAGE);
 					passwordField_2.setText("");
 				}
 				else if(idString.equals("")) {
-					JOptionPane.showMessageDialog(null, "¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.", "¿À·ù!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.", "ì˜¤ë¥˜!", JOptionPane.ERROR_MESSAGE);
 				}
 				else if(pw1String.equals("")) {
-					JOptionPane.showMessageDialog(null, "ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.", "¿À·ù!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.", "ì˜¤ë¥˜!", JOptionPane.ERROR_MESSAGE);
 				}
 				else if(!pw1String.matches(pwPattern)) {
-					JOptionPane.showMessageDialog(null, "³Ê¹« ÀÏ»óÀûÀÌ°Å³ª Âª½À´Ï´Ù.\n´ë¼Ò¹®ÀÚ Æ÷ÇÔ ÃÖ¼Ò 8ÀÚ ÀÌ»ó ÀÔ·ÂÇØÁÖ¼¼¿ä.", "¿À·ù!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ë„ˆë¬´ ì¼ìƒì ì´ê±°ë‚˜ ì§§ìŠµë‹ˆë‹¤.\nëŒ€ì†Œë¬¸ì í¬í•¨ ìµœì†Œ 8ì ì´ìƒ ì…ë ¥í•´ì£¼ì„¸ìš”.", "ì˜¤ë¥˜!", JOptionPane.ERROR_MESSAGE);
 					passwordField_1.setText("");
 					passwordField_2.setText("");
 				}
@@ -241,24 +241,24 @@ public class Login extends JPanel {
 					tempUser.setusername(idString);
 					tempUser.setpassword(pw2String);
 					
-					/*È¸¿ø°¡ÀÔÀ» À§ÇÑ ¼­¹ö Åë½Å*/
+					/*íšŒì›ê°€ì…ì„ ìœ„í•œ ì„œë²„ í†µì‹ */
 					String strUrl="http://zoas.sch.ac.kr:8000/rest-auth/signup/";
 					String jsonStr= Zoas.json.signupJsonstr(tempUser);
 					String responseString =Zoas.httpUtil.postRequest(strUrl,jsonStr);
 					if(responseString=="Error!") {	
-						JOptionPane.showMessageDialog(null, "Áßº¹µÈ ¾ÆÀÌµğÀÔ´Ï´Ù.", "¿À·ù!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "ì¤‘ë³µëœ ì•„ì´ë””ì…ë‹ˆë‹¤.", "ì˜¤ë¥˜!", JOptionPane.ERROR_MESSAGE);
 						txtF_username.setText("");
 						passwordField_1.setText("");
 						passwordField_2.setText("");
 					}
-					else {//ÀÀ´ä ¿À·ù°¡ ¾Æ´Ñ °æ¿ì¿¡¸¸ È¸¿ø°¡ÀÔ Ã³¸®
+					else {//ì‘ë‹µ ì˜¤ë¥˜ê°€ ì•„ë‹Œ ê²½ìš°ì—ë§Œ íšŒì›ê°€ì… ì²˜ë¦¬
 						Zoas.user.setusername(tempUser.getusername());
 						Zoas.user.setpassword(tempUser.getpassword());
-						// ¹®ÀÚ¿­ parsing & À¯Àú Å° ÀúÀå ÈÄ ÀÚµ¿ ·Î±×ÀÎ					
+						// ë¬¸ìì—´ parsing & ìœ ì € í‚¤ ì €ì¥ í›„ ìë™ ë¡œê·¸ì¸					
 						JsonElement element = JsonParser.parseString(responseString);
 						Zoas.user.setkey(element.getAsJsonObject().get("key").getAsString());
-						JOptionPane.showMessageDialog(null, "È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.", "È¸¿ø°¡ÀÔ ¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
-						Zoas.Home_p.noteupdate();	//ÃÖ±Ù ³ëÆ® ¼³Á¤
+						JOptionPane.showMessageDialog(null, "íšŒì›ê°€ì…ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.", "íšŒì›ê°€ì… ì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
+						Zoas.Home_p.noteupdate();	//ìµœê·¼ ë…¸íŠ¸ ì„¤ì •
 						Zoas.mainCard.show(Zoas.frame.getContentPane(),"Main");
 					}					
 				}
@@ -266,25 +266,25 @@ public class Login extends JPanel {
 		});
 		
 		signupButton_1.setForeground(Color.WHITE);
-		signupButton_1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		signupButton_1.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		signupButton_1.setFocusPainted(false);
 		signupButton_1.setContentAreaFilled(false);
 		signupButton_1.setBorderPainted(false);
 		signupButton_1.setBounds(0, -1, 211, 28);
 		Btnpanel_1.add(signupButton_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("¾ÆÀÌµğ");
-		lblNewLabel_2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		JLabel lblNewLabel_2 = new JLabel("ì•„ì´ë””");
+		lblNewLabel_2.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 14));
 		lblNewLabel_2.setBounds(152, 137, 57, 15);
 		panel_2.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_4 = new JLabel("ºñ¹Ğ¹øÈ£");
-		lblNewLabel_4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
+		JLabel lblNewLabel_4 = new JLabel("ë¹„ë°€ë²ˆí˜¸");
+		lblNewLabel_4.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 13));
 		lblNewLabel_4.setBounds(152, 173, 57, 15);
 		panel_2.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("ºñ¹Ğ¹øÈ£ È®ÀÎ");
-		lblNewLabel_5.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
+		JLabel lblNewLabel_5 = new JLabel("ë¹„ë°€ë²ˆí˜¸ í™•ì¸");
+		lblNewLabel_5.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 13));
 		lblNewLabel_5.setBounds(152, 205, 89, 15);
 		panel_2.add(lblNewLabel_5);
 		
@@ -294,7 +294,7 @@ public class Login extends JPanel {
 			}
 		});
 		backButton.setForeground(SystemColor.activeCaption);
-		backButton.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
+		backButton.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 11));
 		backButton.setFocusPainted(false);
 		backButton.setContentAreaFilled(false);
 		backButton.setBorderPainted(false);
