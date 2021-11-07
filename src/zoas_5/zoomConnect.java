@@ -100,6 +100,19 @@ public class zoomConnect {
 //					s.main(null);
 					//Zoas.Record_p.set();
 					//Zoas.laftCard.show(Zoas.left_panel, "NoteForm");
+					HelloController.seekSentance = "";
+
+					Thread t = new Thread(new Runnable() {
+						@Override
+						public void run() {
+							HelloApplication yes = new HelloApplication();
+							yes.openMediaPlayer("http://zoas.sch.ac.kr:80/hls/95384878370/index.m3u8"); // 계속 실행됨
+						}
+					});
+
+					t.start();
+
+					System.out.println("이것마진?");
 				}
 				
 				

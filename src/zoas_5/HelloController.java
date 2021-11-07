@@ -95,7 +95,7 @@ public class HelloController implements Initializable {
         final int IV_WIDTH = 75;
         final int IV_HEIGHT = 100;
         //new File(mediaPath).toURI().toString()
-        mediaVideo = new Media(new File(mediaPath).toURI().toString()); //미디어 연결
+        mediaVideo = new Media(mediaPath); //미디어 연결
         mediaplayer = new MediaPlayer(mediaVideo);
         media_p.setMediaPlayer(mediaplayer);
         //media_p.setLayoutX(mediaVideo.getWidth());
@@ -233,10 +233,10 @@ public class HelloController implements Initializable {
         t = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("확인중...");
                 while(true){
                     if(seekSentance!=null){
                         try {
+                            //여기서 이제 문장 찾기 실행
                             //mediaplayer.seek(Duration.seconds(500.0));
                             //media_s.setValue(500.0);
                             Thread.sleep(1000);
