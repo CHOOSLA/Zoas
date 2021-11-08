@@ -1,9 +1,12 @@
 package zoas_5;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -34,6 +37,12 @@ public class HelloApplication extends Application {
 
         scene = new Scene(fxmlLoader.load(), 900, 600);
         HelloController test  =fxmlLoader.getController();
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+            }
+        });
         stage.setTitle("ZOAS_MediaPlayer");
         stage.setScene(scene);
         stage.show();

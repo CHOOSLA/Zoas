@@ -2,9 +2,10 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/image" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/Main_Gui.java" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/src/Main_Gui.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/NewnoteGui.java" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/src/newnote.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/zoas_4/DataClass/JsonConverter.java" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/src/zoas_5/Allnote.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/zoas_5/DataClass/JsonConverter.java" charset="UTF-8" />
@@ -15,7 +16,6 @@
     <file url="file://$PROJECT_DIR$/src/zoas_5/Login.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/zoas_5/Newnote.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/zoas_5/NoteForm.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/zoas_5/Record.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/zoas_5/Zoas.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/zoas_5/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/zoas_5/resources/hello-view.fxml" charset="UTF-8" />

@@ -53,21 +53,21 @@ public class Main_Gui extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		/*--------------------¸Ş´º ÆĞ³Î--------------------*/
+		/*--------------------ë©”ë‰´ íŒ¨ë„--------------------*/
 		JPanel Manu_panel = new JPanel();
 		Manu_panel.setBackground(Color.LIGHT_GRAY);
 		Manu_panel.setBounds(0, 0, 144, 411);
 		frame.getContentPane().add(Manu_panel);
 		Manu_panel.setLayout(null);
 		
-		/*--------------------ÃÖ±Ù ³ëÆ® ÆĞ³Î--------------------*/
+		/*--------------------ìµœê·¼ ë…¸íŠ¸ íŒ¨ë„--------------------*/
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setBounds(144, 0, 600, 411);
 		frame.getContentPane().add(panel_1);
 		
-		/*----------¸Ş´º ÆĞ³Î °ü·Ã ÄÄÆ÷³ÍÆ®--------------------*/
-		JButton NewnButton = new JButton("»õ ³ëÆ® ¸¸µé±â");
+		/*----------ë©”ë‰´ íŒ¨ë„ ê´€ë ¨ ì»´í¬ë„ŒíŠ¸--------------------*/
+		JButton NewnButton = new JButton("ìƒˆ ë…¸íŠ¸ ë§Œë“¤ê¸°");
 		NewnButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_1.setVisible(false);
@@ -75,13 +75,13 @@ public class Main_Gui extends JFrame {
 			}
 		});
 		NewnButton.setBounds(16, 70, 116, 36);
-		NewnButton.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+		NewnButton.setFont(new Font("ë§‘ì€ ê³ ë”• Semilight", Font.PLAIN, 12));
 		NewnButton.setBackground(Color.WHITE);
-		NewnButton.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¼³Á¤ÇØÁ¦
-		NewnButton.setFocusPainted(false);	// ¹öÆ° Æ÷Ä¿½º ¼³Á¤ÇØÁ¦
+		NewnButton.setBorderPainted(false); // ë²„íŠ¼ í…Œë‘ë¦¬ ì„¤ì •í•´ì œ
+		NewnButton.setFocusPainted(false);	// ë²„íŠ¼ í¬ì»¤ìŠ¤ ì„¤ì •í•´ì œ
 		Manu_panel.add(NewnButton);
 		
-			//ÀÌ¹ÌÁö Å©±â ¼³Á¤
+			//ì´ë¯¸ì§€ í¬ê¸° ì„¤ì •
 		ImageIcon icon1= new ImageIcon("image/note.png");
 		Image img1=icon1.getImage();
 		Image changeimg1=img1.getScaledInstance(17,17,Image.SCALE_SMOOTH);
@@ -99,42 +99,42 @@ public class Main_Gui extends JFrame {
 			}
 		});
 		btnNewButton_1.setForeground(Color.BLACK);
-		btnNewButton_1.setFont(new Font("ÈŞ¸ÕµÕ±ÙÇìµå¶óÀÎ", Font.BOLD, 21));
+		btnNewButton_1.setFont(new Font("íœ´ë¨¼ë‘¥ê·¼í—¤ë“œë¼ì¸", Font.BOLD, 21));
 		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_1.setBounds(16, 20, 109, 32);
-		btnNewButton_1.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¼³Á¤ÇØÁ¦
-		btnNewButton_1.setContentAreaFilled(false);	// ¹öÆ° Ã¤¿ì±â ¼³Á¤ÇØÁ¦
-		btnNewButton_1.setFocusPainted(false);	// ¹öÆ° Æ÷Ä¿½º ¼³Á¤ÇØÁ¦
+		btnNewButton_1.setBorderPainted(false); // ë²„íŠ¼ í…Œë‘ë¦¬ ì„¤ì •í•´ì œ
+		btnNewButton_1.setContentAreaFilled(false);	// ë²„íŠ¼ ì±„ìš°ê¸° ì„¤ì •í•´ì œ
+		btnNewButton_1.setFocusPainted(false);	// ë²„íŠ¼ í¬ì»¤ìŠ¤ ì„¤ì •í•´ì œ
 		Manu_panel.add(btnNewButton_1);
 		
 		
-		/*----------ÃÖ±Ù ³ëÆ® ÆĞ³Î °ü·Ã ÄÄÆ÷³ÍÆ®----------*/
-		JButton AllnButton = new JButton("ÀüÃ¼³ëÆ®");
+		/*----------ìµœê·¼ ë…¸íŠ¸ íŒ¨ë„ ê´€ë ¨ ì»´í¬ë„ŒíŠ¸----------*/
+		JButton AllnButton = new JButton("ì „ì²´ë…¸íŠ¸");
 		AllnButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		AllnButton.setBackground(Color.LIGHT_GRAY);
 		AllnButton.setBounds(28, 122, 90, 25);
-		AllnButton.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¼³Á¤ÇØÁ¦
-		//btnNewButton_2.setOpaque(false); Åõ¸íÇÏ°Ô(¹öÆ° Å¬¸¯ ½Ã µÚ¿¡ ÆÄ¶õ»öÀÌ ¶ß±ä ÇÔ)
-		AllnButton.setContentAreaFilled(false);	// ¹öÆ° Ã¤¿ì±â ¼³Á¤ÇØÁ¦
-		AllnButton.setFocusPainted(false);	// ¹öÆ° Æ÷Ä¿½º ¼³Á¤ÇØÁ¦
+		AllnButton.setBorderPainted(false); // ë²„íŠ¼ í…Œë‘ë¦¬ ì„¤ì •í•´ì œ
+		//btnNewButton_2.setOpaque(false); íˆ¬ëª…í•˜ê²Œ(ë²„íŠ¼ í´ë¦­ ì‹œ ë’¤ì— íŒŒë€ìƒ‰ì´ ëœ¨ê¸´ í•¨)
+		AllnButton.setContentAreaFilled(false);	// ë²„íŠ¼ ì±„ìš°ê¸° ì„¤ì •í•´ì œ
+		AllnButton.setFocusPainted(false);	// ë²„íŠ¼ í¬ì»¤ìŠ¤ ì„¤ì •í•´ì œ
 		Manu_panel.add(AllnButton);
 		panel_1.setLayout(null);
 		
-		JLabel p1_lb1 = new JLabel("ÃÖ±Ù³ëÆ®");
-		p1_lb1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 17));
+		JLabel p1_lb1 = new JLabel("ìµœê·¼ë…¸íŠ¸");
+		p1_lb1.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 17));
 		p1_lb1.setBounds(20, 15, 68, 24);
 		panel_1.add(p1_lb1);
 		
-		JLabel p1_lb2 = new JLabel("ÀÌ¸§");
-		p1_lb2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+		JLabel p1_lb2 = new JLabel("ì´ë¦„");
+		p1_lb2.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15));
 		p1_lb2.setBounds(20, 49, 57, 15);
 		panel_1.add(p1_lb2);
 		
-		JLabel p1_lb3 = new JLabel("¸¶Áö¸· ¼öÁ¤ ÀÏÀÚ");
-		p1_lb3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+		JLabel p1_lb3 = new JLabel("ë§ˆì§€ë§‰ ìˆ˜ì • ì¼ì");
+		p1_lb3.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15));
 		p1_lb3.setBounds(450, 49, 115, 15);
 		panel_1.add(p1_lb3);
 		
@@ -143,21 +143,21 @@ public class Main_Gui extends JFrame {
 		linepanel.setBounds(15, 71, 565, 2);
 		panel_1.add(linepanel);
 		
-		JLabel p1_lb4 = new JLabel("Á¶¾Æ½º, ÀÌ·¸°Ô »ç¿ëÇØ º¸¼¼¿ä");
-		p1_lb4.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
+		JLabel p1_lb4 = new JLabel("ì¡°ì•„ìŠ¤, ì´ë ‡ê²Œ ì‚¬ìš©í•´ ë³´ì„¸ìš”");
+		p1_lb4.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 13));
 		p1_lb4.setBounds(21, 83, 199, 15);
 		panel_1.add(p1_lb4);
 		
-		JLabel p1_lb5 = new JLabel("2021-10-26 ¿ÀÈÄ 7½Ã 38ºĞ");
-		p1_lb5.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
+		JLabel p1_lb5 = new JLabel("2021-10-26 ì˜¤í›„ 7ì‹œ 38ë¶„");
+		p1_lb5.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 11));
 		p1_lb5.setBounds(425, 83, 137, 15);
 		panel_1.add(p1_lb5);
 		
 		JButton p1_Button1 = new JButton("");
 		p1_Button1.setBounds(15, 81, 560, 23);
-		p1_Button1.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¼³Á¤ÇØÁ¦
-		p1_Button1.setContentAreaFilled(false);	// ¹öÆ° Ã¤¿ì±â ¼³Á¤ÇØÁ¦
-		p1_Button1.setFocusPainted(false);	// ¹öÆ° Æ÷Ä¿½º ¼³Á¤ÇØÁ¦
+		p1_Button1.setBorderPainted(false); // ë²„íŠ¼ í…Œë‘ë¦¬ ì„¤ì •í•´ì œ
+		p1_Button1.setContentAreaFilled(false);	// ë²„íŠ¼ ì±„ìš°ê¸° ì„¤ì •í•´ì œ
+		p1_Button1.setFocusPainted(false);	// ë²„íŠ¼ í¬ì»¤ìŠ¤ ì„¤ì •í•´ì œ
 		panel_1.add(p1_Button1);
 		
 	}

@@ -15,13 +15,13 @@ public class newnote extends JPanel {
 		panel_2.setVisible(true);
 		frame.getContentPane().add(panel_2);
 		
-		/*----------»õ ³ëÆ® »ý¼º ÆÐ³Î °ü·Ã ÄÄÆ÷³ÍÆ®----------*/
-		JTextField textField = new JTextField("»õ³ëÆ®"){
+		/*----------?? ??? ???? ?Ð³? ???? ???????----------*/
+		JTextField textField = new JTextField("?????"){
 			 @Override public void setBorder(Border border) {
 			        // No!
 			    }
 		};
-		textField.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 17));
+		textField.setFont(new Font("???? ???", Font.BOLD, 17));
 		textField.setBounds(20, 23, 200, 22);
 		panel_2.add(textField);
 		textField.setColumns(10);
@@ -31,14 +31,14 @@ public class newnote extends JPanel {
 		linepanel_1.setBounds(15, 71, 565, 2);
 		panel_2.add(linepanel_1);
 		
-		JLabel p2_lb2 = new JLabel("2021-10-26 ¿ÀÈÄ 7½Ã 38ºÐ");
-		p2_lb2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
+		JLabel p2_lb2 = new JLabel("2021-10-26 ???? 7?? 38??");
+		p2_lb2.setFont(new Font("???? ???", Font.PLAIN, 11));
 		p2_lb2.setBounds(20, 43, 137, 15);
 		panel_2.add(p2_lb2);
 		
-		JButton p2_Button1 = new JButton("°­ÀÇ ¿¬°áÇÏ±â");
+		JButton p2_Button1 = new JButton("???? ???????");
 		p2_Button1.setForeground(Color.WHITE);
-		p2_Button1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		p2_Button1.setFont(new Font("???? ???", Font.PLAIN, 14));
 		p2_Button1.setBorderPainted(false);
 		p2_Button1.setBackground(SystemColor.textHighlight);
 		p2_Button1.setBounds(220, 206, 150, 60);
