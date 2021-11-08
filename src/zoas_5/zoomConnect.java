@@ -110,15 +110,12 @@ public class zoomConnect {
 					String ResponseCode3 =Zoas.httpUtil.postRequest(joinUrl,jsonStr3);
 						
 					//동영상 창 띄우는 부분
-					Thread t = new Thread(new Runnable() {
-						@Override
-						public void run() {
-							HelloApplication yes = new HelloApplication();
-							yes.openMediaPlayer("http://zoas.sch.ac.kr:80/hls/95384878370/index.m3u8"); // 계속 실행됨
-						}
-					});
-
-					t.start();
+					String url = "http://zoas.sch.ac.kr:80/hls/"+Zoas.user.getclassid()+"/index.m3u8";
+					String vlc = "C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe";
+					try {
+						ProcessBuilder pb = new ProcessBuilder(vlc,url,"--effect-width=900", "--effect-height=600");
+						Process p = pb.start();
+					} catch (Exception ee){ee.printStackTrace();}
 
 				}
 				

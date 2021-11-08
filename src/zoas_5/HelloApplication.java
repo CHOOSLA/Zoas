@@ -2,17 +2,46 @@ package zoas_5;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
+import javafx.scene.control.DialogEvent;
+import javafx.scene.control.DialogPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Logger;
 
 
 import static zoas_5.HelloController.mediaPath;
@@ -37,15 +66,16 @@ public class HelloApplication extends Application {
 
         scene = new Scene(fxmlLoader.load(), 900, 600);
         HelloController test  =fxmlLoader.getController();
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent t) {
-                Platform.exit();
-            }
-        });
         stage.setTitle("ZOAS_MediaPlayer");
         stage.setScene(scene);
         stage.show();
+    }
+
+
+
+    @Override
+    public void stop(){
+        System.out.println("stop!!!!\n\n\n");
     }
 
     public void openMediaPlayer(String args){

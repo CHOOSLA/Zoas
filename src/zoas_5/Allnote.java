@@ -145,21 +145,18 @@ public class Allnote extends JPanel implements MouseListener {
 		Zoas.user.setnoteclassid(notepanel.getText());	//선택한 노트
 		System.out.println(notepanel.getText());
 
-		Thread t = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				HelloApplication yes = new HelloApplication();
-				yes.openMediaPlayer("http://zoas.sch.ac.kr:8000/media/"+Zoas.user.getnoteclassid()+".mp4"); // 계속 실행됨
-			}
-		});
-
-		t.start();
 		
 		String strUrl="http://zoas.sch.ac.kr:8000/zoas-api/stt-view/";
 		String jsonStr= Zoas.json.SttviewJsonstr(Zoas.user.getnoteclassid());
 		String responseString=Zoas.httpUtil.postRequest(strUrl,jsonStr);
 
-		
+		String url = "http://zoas.sch.ac.kr:8000/media/"+Zoas.user.getnoteclassid()+".mp4";
+		String vlc = "C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe";
+		try {
+			ProcessBuilder pb = new ProcessBuilder(vlc,url,"--effect-width=900", "--effect-height=600");
+			Process p = pb.start();
+		} catch (Exception ee){ee.printStackTrace();}
+
 		// 응답 문자열(노트 내용들) 저장
 		JsonElement element = JsonParser.parseString(responseString);
 		NoteInfo noteInfo=new NoteInfo();

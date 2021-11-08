@@ -10,10 +10,14 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -26,11 +30,40 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
+import javafx.scene.control.DialogEvent;
+import javafx.scene.control.DialogPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
+
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javax.swing.tree.ExpandVetoException;
@@ -74,6 +107,7 @@ public class HelloController implements Initializable {
     private Slider volume_s;
 
 
+
     private ImageView ivPlay;
     private ImageView ivPause;
 
@@ -101,7 +135,6 @@ public class HelloController implements Initializable {
         //media_p.setLayoutX(mediaVideo.getWidth());
         //media_p.setLayoutY(mediaVideo.getHeight());
         mediaplayer.setAutoPlay(true);
-
 
 
         try {
@@ -279,5 +312,4 @@ public class HelloController implements Initializable {
             }
         }
     }
-
 }
