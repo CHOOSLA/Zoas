@@ -10,14 +10,18 @@ import javax.swing.border.Border;
 import javax.swing.text.BadLocationException;
 
 import zoas_5.DataClass.NoteInfo;
+import zoas_5.DataClass.stringTokenize;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 //노트를 열면 뜨는 창 서버에서 텍스트를 불러옴
 public class NoteForm extends JPanel {
 	NoteInfo noteinfo;
 	ArrayList<NoteInfo> notelist;
-	ArrayList<String> keyword= new ArrayList<>();	//요약 키워드 저장	
+	ArrayList<String> keywordList= new ArrayList<>();	//요약 키워드 저장	
 	textHighlighter highlighter =new textHighlighter();
 
 	JPanel linepanel_w = new JPanel();
@@ -34,13 +38,40 @@ public class NoteForm extends JPanel {
 	};
 	
 	JTextPane recordtextPane = new JTextPane();
+	JScrollPane scrollPane = new JScrollPane(recordtextPane);
 	JTextPane summaryTextPane = new JTextPane();
-	ImageIcon icon= new ImageIcon("");
+	JScrollPane scrollPane_1 = new JScrollPane(summaryTextPane);
 	JLabel lblNewLabel = new JLabel("");
+	Runnable doScroll = new Runnable() {
+		   public void run() {
+				scrollPane.getVerticalScrollBar().setValue(0);
+				scrollPane_1.getVerticalScrollBar().setValue(0);
+
+		   }
+	};
 	
 	public void set(){
-
+		notelist=Zoas.user.getNoteList();
+		noteinfo=notelist.remove(0);
 		
+		noteNameField.setText(noteinfo.getclass_id());
+		recordtextPane.setText(noteinfo.getstt());
+		summaryTextPane.setText(noteinfo.getsummary());
+		stringTokenize tokenize= new stringTokenize();
+		tokenize.main(noteinfo.getkeywords(), keywordList);
+		highlighter.highlightKeyword(recordtextPane,keywordList);
+		highlighter.highlightKeyword(summaryTextPane,keywordList);
+		try {
+			URL url = new URL("http://zoas.sch.ac.kr:8000/media/image/"+noteinfo.getclass_id()+".png");
+			ImageIcon icon= new ImageIcon(url);
+			icon=Zoas.imageSetSize(icon, 200, 200);
+			lblNewLabel.setIcon(icon);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Zoas.user.getNoteList().clear();
+		SwingUtilities.invokeLater(doScroll);
 	}
 	/**
 	 * Create the panel.
@@ -94,39 +125,37 @@ public class NoteForm extends JPanel {
 		lblNewLabel_4.setBounds(470, 77, 45, 15);
 		lblNewLabel_4.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		add(lblNewLabel_4);
+		recordtextPane.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 		
 		//기록
-		recordtextPane.setText("이 문서는 아직 요약하지 않은 문서이다. 이제부터 요약을 해보자! 어떤 문장을 요약할지는 내 맘이다. 배고프다.");
 		recordtextPane.setBounds(15, 102, 435, 499);
-		add(recordtextPane);
+		//add(recordtextPane);
 		
 		//요약
-		summaryTextPane.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				String s=summaryTextPane.getSelectedText();	//TextArea상의 선택부분 텍스트를 얻어옴
-				if(s!=null) {	
-					keyword.add(s);
-					highlighter.highlightKeyword(recordtextPane,keyword);
-					System.out.println(s);
-					keyword.remove(s);
-					
-				}
-			}
-		});
-		summaryTextPane.setText("이제부터 요약을 해보자! 배고프다.");
+//		summaryTextPane.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseReleased(MouseEvent e) {
+//				String s=summaryTextPane.getSelectedText();	//TextArea상의 선택부분 텍스트를 얻어옴
+//
+//			}
+//		});
+		summaryTextPane.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 		summaryTextPane.setBounds(470, 310, 356, 290);
-		add(summaryTextPane);
+		//add(summaryTextPane);
 		
-		keyword.add("요약");
-		keyword.add("배고프다");
-		highlighter.highlightKeyword(recordtextPane,keyword);
 		
 		//요약 사진 넣을 레이블
 		lblNewLabel.setBounds(468, 102, 200, 200);
-		icon=Zoas.imageSetSize(icon, 49, 49);
-		lblNewLabel.setIcon(icon);
 		add(lblNewLabel);
+		
+		
+		scrollPane.setBounds(15, 102, 435, 499);
+		add(scrollPane);
+		
+		scrollPane_1.setBounds(470, 310, 356, 290);
+		add(scrollPane_1);
+		
+		
 		
 	}
 }

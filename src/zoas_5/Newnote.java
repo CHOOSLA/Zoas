@@ -33,16 +33,11 @@ public class Newnote extends JPanel {
 		noteinfo=new NoteInfo();
 		LocalDateTime time =LocalDateTime.now();		
 		String DateTime = datetimeformat.format(time);
-		noteinfo.setName("새노트");	//기본 이름
-		noteinfo.setCreatDate(DateTime);	//생성 날짜
-		noteinfo.setEditDate(DateTime);	//수정 날짜
-		noteinfo.setRecordText(" ");	//음성 기록
-		noteinfo.setSummaryText(" ");	//요약
 	}
 	public void set() {
 		note_init();
-		noteNameField.setText(noteinfo.getName());
-		noteDateLabel.setText(noteinfo.getCreatDate());	
+		//noteNameField.setText(noteinfo.getName());
+		//noteDateLabel.setText(noteinfo.getCreatDate());	
 	}
 	/**
 	 * Create the panel.
@@ -74,8 +69,8 @@ public class Newnote extends JPanel {
 			@Override
 			public void focusLost(FocusEvent e) {
 				JTextField textField = (JTextField)e.getSource();
-				noteinfo.setName(textField.getText());
-				noteNameField.setText(noteinfo.getName());
+				//noteinfo.setName(textField.getText());
+				//noteNameField.setText(noteinfo.getName());
 			}
 		});
 		noteNameField.setFont(new Font("맑은 고딕", Font.BOLD, 17));

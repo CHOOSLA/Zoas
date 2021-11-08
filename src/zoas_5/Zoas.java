@@ -13,7 +13,14 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import zoas_5.DataClass.JsonConverter;
@@ -47,7 +54,7 @@ public class Zoas extends JFrame  {
 	static public JPanel left_panel = new JPanel();
 	static Home Home_p= new Home();	// 최근 노트 패널
 	static Newnote Newnote_p = new Newnote();	// 새 노트 패널
-	static Record Record_p = new Record();	// 기록 패널
+	//static Record Record_p = new Record();	// 기록 패널
 	static Allnote Allnote_p=new Allnote();	// 전체 노트 패널
 	static NoteForm noteform_p=new NoteForm();	// 노트 기본 배경(?)
 	
@@ -80,10 +87,21 @@ public class Zoas extends JFrame  {
 				String jsonStr= Zoas.json.particiJsonstr(user);
 				String responseString=Zoas.httpUtil.postRequest(strUrl,jsonStr);
 				
-//				JsonElement element = JsonParser.parseString(responseString);
-//				Zoas.user.setkey(element.getAsJsonObject().get("key").getAsString());
+				JSONParser parser = new JSONParser();
+				try {
+					JSONObject object = (JSONObject)parser.parse(responseString);
+					JSONArray arr = (JSONArray)object.get("result");
+					for (int i = 0 ; i < arr.size(); i ++) {
+						JSONObject tmp = (JSONObject)arr.get(i); 
+						Zoas.user.getclassidList().add(tmp.get("class_id").toString());               
+		            }
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
 				
 				Allnote_p.noteupdate();	//노트 리스트 업데이트
+				Zoas.user.getclassidList().clear();
 				laftCard.show(left_panel, "AllNote");
 		    }
 			@Override//마우스가 버튼 안으로 들어오면
@@ -126,7 +144,7 @@ public class Zoas extends JFrame  {
 		
 		left_panel.add("Home",Home_p);
 		left_panel.add("NewNote",Newnote_p);
-		left_panel.add("Record",Record_p);
+		//left_panel.add("Record",Record_p);
 		left_panel.add("AllNote",Allnote_p);
 		left_panel.add("NoteForm",noteform_p);
 		laftCard.show(left_panel, "Home");
@@ -192,7 +210,7 @@ public class Zoas extends JFrame  {
 	//이미지 크기 변환 함수
 	public static ImageIcon imageSetSize(ImageIcon icon, int w, int h) {
 		Image img=icon.getImage();	
-		Image changedimg=img.getScaledInstance(w,h,Image.SCALE_DEFAULT);
+		Image changedimg=img.getScaledInstance(w,h,Image.SCALE_SMOOTH);
 		ImageIcon changedicon=new ImageIcon(changedimg);
 		
 		return changedicon;

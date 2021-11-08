@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 public class zoomConnect {
 	private String streamUrl="rtmp://zoas.sch.ac.kr:1935/live";
@@ -47,17 +50,23 @@ public class zoomConnect {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		textField = new JTextField();
-		textField.setBounds(172, 66, 116, 21);
+		textField.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
+		textField.setBounds(137, 104, 150, 21);
 		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		textField.setColumns(11);
 		
 		
 		JButton btnNewButton = new JButton("연결하기");
+		btnNewButton.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(SystemColor.textHighlight);
+		btnNewButton.setBorderPainted(false);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Zoas.user.setclassid(textField.getText());	//회의 아이디 저장
@@ -96,12 +105,11 @@ public class zoomConnect {
 					e1.printStackTrace();
 				}
 				if(ResponseCode1==204 && ResponseCode2==204) {
-//					VedioGui s=new VedioGui();
-//					s.main(null);
-					//Zoas.Record_p.set();
-					//Zoas.laftCard.show(Zoas.left_panel, "NoteForm");
-					HelloController.seekSentance = "";
-
+					String joinUrl="https://api.zoom.us/v2/meetings/"+Zoas.user.getclassid()+"/livestream/status";
+					String jsonStr3=Zoas.json.joinJsonstr(Zoas.user);
+					String ResponseCode3 =Zoas.httpUtil.postRequest(joinUrl,jsonStr3);
+						
+					//동영상 창 띄우는 부분
 					Thread t = new Thread(new Runnable() {
 						@Override
 						public void run() {
@@ -112,17 +120,21 @@ public class zoomConnect {
 
 					t.start();
 
-					System.out.println("이것마진?");
 				}
 				
 				
 			}
 		});
-		btnNewButton.setBounds(171, 174, 97, 23);
+		btnNewButton.setBounds(147, 159, 125, 42);
 		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("\uD68C\uC758 \uC544\uC774\uB514");
-		lblNewLabel.setBounds(103, 69, 64, 15);
+		JLabel lblNewLabel = new JLabel("\uD68C\uC758 \uC544\uC774\uB514(11\uC790)");
+		lblNewLabel.setBounds(164, 79, 103, 15);
 		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("ZOOM\uC5D0 \uC5F0\uACB0\uD558\uAE30...");
+		lblNewLabel_1.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+		lblNewLabel_1.setBounds(137, 21, 155, 29);
+		frame.getContentPane().add(lblNewLabel_1);
 	}
 }

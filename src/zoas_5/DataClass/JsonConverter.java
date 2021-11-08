@@ -12,7 +12,7 @@ import zoas_5.DataClass.User;
 
 public class JsonConverter {
 
-	//·Î±×ÀÎ ¿äÃ»À» À§ÇÑ JSON ¹®ÀÚ¿­ »ı¼º
+	//ë¡œê·¸ì¸ ìš”ì²­ì„ ìœ„í•œ JSON ë¬¸ìì—´ ìƒì„±
 	public static String loginJsonstr(User user) {
 		JsonObject jsonObject = new JsonObject ();
 		jsonObject.addProperty("username", user.getusername());
@@ -25,7 +25,7 @@ public class JsonConverter {
 		return jsonStr; 
 	}
 	
-	//È¸¿ø°¡ÀÔ ¿äÃ»À» À§ÇÑ JSON ¹®ÀÚ¿­ »ı¼º
+	//íšŒì›ê°€ì… ìš”ì²­ì„ ìœ„í•œ JSON ë¬¸ìì—´ ìƒì„±
 	public static String signupJsonstr(User user) {
 		JsonObject jsonObject = new JsonObject ();
 		jsonObject.addProperty("username", user.getusername());
@@ -38,7 +38,7 @@ public class JsonConverter {
 		return jsonStr; 
 	}
 	
-	//ÁÜ ¿¬°á ¿äÃ»¹®
+	//ì¤Œ ì—°ê²° ìš”ì²­ë¬¸
 	public static String zoomliveJsonStr(String classid,String streamUrl, String pageUrl) {
 		JsonObject jsonObject = new JsonObject ();
 		jsonObject.addProperty("stream_url", streamUrl);
@@ -64,42 +64,42 @@ public class JsonConverter {
 		return jsonStr;
 	}
 		
-	//participation Âü¿©ÇÑ °­ÀÇ ¾ÆÀÌµğ? ¿äÃ»¹®
+	//participation ì°¸ì—¬í•œ ê°•ì˜ ì•„ì´ë”” ë°›ì•„ì˜¤ëŠ” ìš”ì²­ë¬¸
 	public static String particiJsonstr(User user) {
 		JsonObject jsonObject = new JsonObject ();
-		System.out.println(user.getusername());
-		jsonObject.addProperty("username",user.getusername() );	//¾ÆÀÌµğ º¸³¿
+		jsonObject.addProperty("username",user.getusername() );	//ì•„ì´ë”” ë³´ëƒ„
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String jsonStr = gson.toJson(jsonObject);
 		return jsonStr;
 	}
+	//Join ë“±ë¡ ìš”ì²­ë¬¸
+		public static String joinJsonstr(User user) {
+			JsonObject jsonObject = new JsonObject ();	
+			jsonObject.addProperty("username",Zoas.user.getusername() );	//ì•„ì´ë”” ë³´ëƒ„
+			jsonObject.addProperty("class_id",Zoas.user.getclassid() );
+			
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			String jsonStr = gson.toJson(jsonObject);
+			return jsonStr;
+		}
 	
-	//stt ÆÄÀÏ ¿äÃ»¹® »ı¼º
-	public static String SttviewJsonstr(User user) {
+	//stt íŒŒì¼ ìš”ì²­ë¬¸ ìƒì„±
+	public static String SttviewJsonstr(String classid) {
 		JsonObject jsonObject = new JsonObject ();
-		jsonObject.addProperty("Class id", "");	//Å¬·¡½º ¾ÆÀÌµğ ¹ÌÁ¤
+		jsonObject.addProperty("class_id", classid);	//í´ë˜ìŠ¤ ì•„ì´ë”” 
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String jsonStr = gson.toJson(jsonObject);
 		return jsonStr;
 	}
 	
-	//summary ÆÄÀÏ ¿äÃ»¹® »ı¼º
-	public static String SummaryviewJsonstr(User user) {
-		JsonObject jsonObject = new JsonObject ();
-		jsonObject.addProperty("Class id", "");	//Å¬·¡½º ¾ÆÀÌµğ ¹ÌÁ¤
-		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String jsonStr = gson.toJson(jsonObject);
-		return jsonStr;
-	}
 	
-	//¿ÀºêÁ§Æ®->JSON
+	//ì˜¤ë¸Œì íŠ¸->JSON
 	public static void ObjectToJson(User user) {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		
-		//Object¸¦ Json ¹®ÀÚ¿­·Î º¯È¯
+		//Objectë¥¼ Json ë¬¸ìì—´ë¡œ ë³€í™˜
 		String jsonStr = gson.toJson(user);
 
 		
@@ -107,44 +107,23 @@ public class JsonConverter {
 	
 	}
 	
-	//JSON->¿ÀºêÁ§Æ®
-	public static User parseJsonData(String json) {
-		json = "{\r\n"
-				+ "  \"username\": \"oppsla\",\r\n"
-				+ "  \"email\": \"\",\r\n"
-				+ "  \"password\": \"oppslaoppsla\",\r\n"
-				+ "  \"noteList\": [\r\n"
-				+ "    {\r\n"
-				+ "        \"name\":\"³ëÆ®1\",\r\n"
-				+ "        \"creatDate\":\"2021-10-26 ¿ÀÈÄ 7½Ã 38ºĞ\",\r\n"
-				+ "        \"editDate\":\"2021-10-30 ¿ÀÀü 2½Ã 10ºĞ\",\r\n"
-				+ "        \"recordText\":\"À½¼º ±â·Ï\",\r\n"
-				+ "        \"summaryTest\":\"¿ä¾à ±â·Ï\"\r\n"
-				+ "    },\r\n"
-				+ "    {\r\n"
-				+ "        \"name\":\"³ëÆ®2\",\r\n"
-				+ "        \"creatDate\":\"2021-10-26 ¿ÀÈÄ 7½Ã 38ºĞ\",\r\n"
-				+ "        \"editDate\":\"2021-10-30 ¿ÀÀü 2½Ã 10ºĞ\",\r\n"
-				+ "        \"recordText\":\"À½¼º ±â·Ï\",\r\n"
-				+ "        \"summaryTest\":\"¿ä¾à ±â·Ï\"\r\n"
-				+ "    }\r\n"
-				+ "  ]\r\n"
-				+ "}";
-		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-	 
-		User user= gson.fromJson(json,User.class);
-		return user;
-	}
+	//JSON->ì˜¤ë¸Œì íŠ¸
+//	public static User parseJsonData(String json) {
+//		
+//		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//	 
+//		User user= gson.fromJson(json,User.class);
+//		return user;
+//	}
 	
 	//??
 	public static JsonObject JsonStringParse(String jsonstr){
-		// ¹®ÀÚ¿­ parsing
+		// ë¬¸ìì—´ parsing
 		JsonElement element = JsonParser.parseString(jsonstr);
-		// element°¡ Object Å¸ÀÔÀÎ °æ¿ì JsonObject Å¸ÀÔÀ¸·Î º¯È¯
+		// elementê°€ Object íƒ€ì…ì¸ ê²½ìš° JsonObject íƒ€ì…ìœ¼ë¡œ ë³€í™˜
 		JsonObject object = element.getAsJsonObject();
 		
-		//object ¸®ÅÏ¹Ş¾Æ¼­ object.getAsJsonObject().get("key").getAsString() ÀÌ·±½ÄÀ¸·Î »ç¿ë
+		//object ë¦¬í„´ë°›ì•„ì„œ object.getAsJsonObject().get("key").getAsString() ì´ëŸ°ì‹ìœ¼ë¡œ ì‚¬ìš©
 		return object;
 	}	
 }
