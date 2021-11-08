@@ -3,6 +3,9 @@ package zoas_5;
 import java.awt.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -102,16 +105,22 @@ public class NoteForm extends JPanel {
 		int count = 0;
 		String firstWord = tmp.get(0);
 
+		int test1 = 0;
+		int test2 = 0;
 		// 본문에서 해당 단어를 포함하는 문장들을 찾음
 		for(ArrayList<String> sent : tokenListOfrecordTextList){
+			test1++;
 			for(String token: sent){
+				test2++;
 				if(token.equals(firstWord)){
 					count++;
 				}
 			}
+			test2 = 0;
 		}
 		for(String s : timestampList){
 			String[] splited = s.split(",");
+			firstWord = firstWord.trim();
 			if(splited[0].equals(firstWord)){
 				count--;
 
@@ -189,9 +198,9 @@ public class NoteForm extends JPanel {
 		recordtextPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				//String s=recordtextPane.getSelectedText();	//TextArea상의 선택부분 텍스트를 얻어옴
-				//System.out.println(s);
-				//seekTimeFromRecord(s);
+				String s=recordtextPane.getSelectedText();	//TextArea상의 선택부분 텍스트를 얻어옴
+				System.out.println(s);
+				seekTimeFromRecord(s);
 
 			}
 	});
@@ -210,8 +219,21 @@ public class NoteForm extends JPanel {
 		
 		scrollPane_1.setBounds(470, 310, 356, 290);
 		add(scrollPane_1);
-		
-		
+
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					URI uri = new URI("http://zoas.sch.ac.kr:8000/media/image/"+noteinfo.getclass_id()+".png");
+					desktop.browse(uri);
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				} catch (URISyntaxException ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
 		
 	}
 }

@@ -172,6 +172,7 @@ public class Allnote extends JPanel implements MouseListener {
 		Zoas.user.getNoteList().add(noteInfo);
 		
 		Zoas.noteform_p.set();
+		Zoas.user.getNoteList().clear();
 		Zoas.laftCard.show(Zoas.left_panel, "NoteForm");
 		
 	}

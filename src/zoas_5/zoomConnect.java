@@ -1,7 +1,5 @@
 package zoas_5;
 
-import javafx.application.Platform;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -116,11 +114,12 @@ public class zoomConnect {
 						@Override
 						public void run() {
 							HelloApplication yes = new HelloApplication();
-							yes.openMediaPlayer("http://zoas.sch.ac.kr:80/media/"+Zoas.user.getclassid()+".index.m3u8"); // 계속 실행됨
+							yes.openMediaPlayer("http://zoas.sch.ac.kr:80/hls/95384878370/index.m3u8"); // 계속 실행됨
 						}
 					});
 
 					t.start();
+
 				}
 				
 				
