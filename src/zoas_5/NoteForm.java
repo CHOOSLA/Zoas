@@ -16,12 +16,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.StringTokenizer;
 
 //노트를 열면 뜨는 창 서버에서 텍스트를 불러옴
 public class NoteForm extends JPanel {
 	NoteInfo noteinfo;
 	ArrayList<NoteInfo> notelist;
-	ArrayList<String> keywordList= new ArrayList<>();	//요약 키워드 저장	
+	ArrayList<String> keywordList= new ArrayList<>();	//요약 키워드 저장
+	ArrayList<String> timestampList = new ArrayList<>(); // 타임 스템프 저장
+	ArrayList<String> recordTextList = new ArrayList<>(); // 레코드된 것 저장
+
+	ArrayList<ArrayList<String>> tokenListOfrecordTextList = new ArrayList<>(); // 엔터별로 분리된 문장을 또 스페이스별로 나눔
+	// seekTimeFromRecord 메소드의 연산 속도를 향상 하기 위해 미리 준비해 놓는 것
+
 	textHighlighter highlighter =new textHighlighter();
 
 	JPanel linepanel_w = new JPanel();
@@ -58,8 +65,17 @@ public class NoteForm extends JPanel {
 		recordtextPane.setText(noteinfo.getstt());
 		summaryTextPane.setText(noteinfo.getsummary());
 		stringTokenize tokenize= new stringTokenize();
-		tokenize.main(noteinfo.getkeywords(), keywordList);
-		highlighter.highlightKeyword(recordtextPane,keywordList);
+		tokenize.main(noteinfo.getkeywords(), keywordList,"\n"); // 받아온 키워드 \n 기준으로 분리
+		tokenize.main(noteinfo.gettimestamps(),timestampList,"\n");
+		tokenize.main(noteinfo.getstt(),recordTextList,"\n");
+
+		for (String sent:recordTextList){
+			ArrayList<String> tmp = new ArrayList<String>();
+			tokenize.main(sent,tmp," ");
+			tokenListOfrecordTextList.add(tmp);
+		}
+
+		highlighter.highlightKeyword(recordtextPane,keywordList); // 하이라이팅
 		highlighter.highlightKeyword(summaryTextPane,keywordList);
 		try {
 			URL url = new URL("http://zoas.sch.ac.kr:8000/media/image/"+noteinfo.getclass_id()+".png");
@@ -73,6 +89,44 @@ public class NoteForm extends JPanel {
 		Zoas.user.getNoteList().clear();
 		SwingUtilities.invokeLater(doScroll);
 	}
+
+
+	public double seekTimeFromRecord(String sentence){
+		stringTokenize tokenize= new stringTokenize();
+		ArrayList<String> tmp = new ArrayList<>(); // 띄어쓰기 기준으로 분리된 단어들
+		tokenize.main(sentence,tmp," ");
+		// 일단 중복 단어가 있을 경우
+		// stt에서 그게 몇번 째 인가 count하고
+		// 그 count를 가지고 timestamp에서도 몇 번째 인 것을 확인 한다.
+
+		int count = 0;
+		String firstWord = tmp.get(0);
+
+		// 본문에서 해당 단어를 포함하는 문장들을 찾음
+		for(ArrayList<String> sent : tokenListOfrecordTextList){
+			for(String token: sent){
+				if(token.equals(firstWord)){
+					count++;
+				}
+			}
+		}
+		for(String s : timestampList){
+			String[] splited = s.split(",");
+			if(splited[0].equals(firstWord)){
+				count--;
+
+				if(count==0){
+					return Double.parseDouble(splited[1]);
+				}
+			}
+		}
+
+		return -1;
+
+
+	}
+
+
 	/**
 	 * Create the panel.
 	 */
@@ -132,13 +186,15 @@ public class NoteForm extends JPanel {
 		//add(recordtextPane);
 		
 		//요약
-//		summaryTextPane.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseReleased(MouseEvent e) {
-//				String s=summaryTextPane.getSelectedText();	//TextArea상의 선택부분 텍스트를 얻어옴
-//
-//			}
-//		});
+		recordtextPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				//String s=recordtextPane.getSelectedText();	//TextArea상의 선택부분 텍스트를 얻어옴
+				//System.out.println(s);
+				//seekTimeFromRecord(s);
+
+			}
+	});
 		summaryTextPane.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 		summaryTextPane.setBounds(470, 310, 356, 290);
 		//add(summaryTextPane);
