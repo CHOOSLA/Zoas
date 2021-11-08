@@ -12,6 +12,11 @@ import javax.swing.*;
 
 import zoas_5.DataClass.NoteInfo;
 import javax.swing.border.SoftBevelBorder;
+import javax.swing.plaf.InsetsUIResource;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
@@ -28,27 +33,32 @@ public class Allnote extends JPanel implements MouseListener {
 	ImageIcon noteicon= new ImageIcon("image/sticky-note.png");
 	
 	public void noteupdate() {
-		ArrayList<NoteInfo> notelist=Zoas.user.getNoteList();
-		int notes=notelist.size();	//노트 배열의 개수
+		
+		ArrayList<String> classlist=Zoas.user.getclassidList();
+		int notes=classlist.size();	//노트 배열의 개수
 		
 		JLabel[] lb4=new JLabel[notes];	//노트 이름
 		JLabel[] lb4_icon=new JLabel[notes] ;			//노트 아이콘
 		JLabel[] lb5=new JLabel[notes];	//노트 수정 날짜
-		JPanel[] notepanel=new JPanel[notes];	//각 노트 패널
+		JTextPane[] notepanel=new JTextPane[notes];	//각 노트 패널
 		
 		for(int i=0;i<notes;i++) {
-			notepanel[i]=new JPanel(); 
+			notepanel[i]=new JTextPane(); 
 			notepanel[i].setLayout(null);
 			notepanel[i].setBackground(Color.WHITE);
+			notepanel[i].setText(classlist.get(i));
+			notepanel[i].setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+			notepanel[i].setEditable(false);
+			notepanel[i].setMargin(new Insets(6, 26, 10, 10));
 			notepanel[i].setBounds(0, 0+30*i, 815, 35);
 			panel.add(notepanel[i]);
 			notepanel[i].addMouseListener(this);
 			
-			//노트 이름
-			lb4[i]=new JLabel(notelist.get(i).getName());
-			lb4[i].setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-			lb4[i].setBounds(29, 1, 400, 30);
-			notepanel[i].add(lb4[i]);
+//			//노트 이름
+//			lb4[i]=new JLabel(classlist.get(i));
+//			lb4[i].setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+//			lb4[i].setBounds(29, 1, 400, 30);
+//			notepanel[i].add(lb4[i]);
 			
 			//노트 아이콘
 			lb4_icon[i]=new JLabel();
@@ -56,11 +66,11 @@ public class Allnote extends JPanel implements MouseListener {
 			lb4_icon[i].setIcon(noteicon);
 			notepanel[i].add(lb4_icon[i]);
 			
-			//노트 수정 날짜
-			lb5[i]=new JLabel(notelist.get(i).getEditDate());
-			lb5[i].setFont(new Font("맑은 고딕", Font.PLAIN, 13));
-			lb5[i].setBounds(630, 2, 170, 30);
-			notepanel[i].add(lb5[i]);
+//			//노트 수정 날짜
+//			lb5[i]=new JLabel(classlist.get(i).getEditDate());
+//			lb5[i].setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+//			lb5[i].setBounds(630, 2, 170, 30);
+//			notepanel[i].add(lb5[i]);
 		}
 	}
 	/**
@@ -103,12 +113,7 @@ public class Allnote extends JPanel implements MouseListener {
 		noteicon=Zoas.imageSetSize(noteicon, 20, 20);
 		
 	}
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-		Zoas.laftCard.show(Zoas.left_panel, "NoteForm");
-	}
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -122,13 +127,39 @@ public class Allnote extends JPanel implements MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		JPanel p = (JPanel)e.getSource();
+		JTextPane p = (JTextPane)e.getSource();
         p.setBackground(SystemColor.inactiveCaptionBorder);
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		JPanel p = (JPanel)e.getSource();        
+		JTextPane p = (JTextPane)e.getSource();        
     	p.setBackground(Color.WHITE);
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		JTextPane notepanel=(JTextPane)e.getSource();
+		Zoas.user.setnoteclassid(notepanel.getText());	//선택한 노트
+		System.out.println(notepanel.getText());
+		
+		String strUrl="http://zoas.sch.ac.kr:8000/zoas-api/stt-view/";
+		String jsonStr= Zoas.json.SttviewJsonstr(Zoas.user.getnoteclassid());
+		String responseString=Zoas.httpUtil.postRequest(strUrl,jsonStr);
+		
+		// 응답 문자열(노트 내용들) 저장
+		JsonElement element = JsonParser.parseString(responseString);
+		NoteInfo noteInfo=new NoteInfo();
+		noteInfo.setclass_id(Zoas.user.getnoteclassid());
+		noteInfo.setstt(element.getAsJsonObject().get("stt_contents").getAsString());
+		noteInfo.setsummary(element.getAsJsonObject().get("summary_contents").getAsString());
+		noteInfo.setkeywords(element.getAsJsonObject().get("keywords").getAsString());
+		noteInfo.settimestamps(element.getAsJsonObject().get("timestamps").getAsString());
+
+		Zoas.user.getNoteList().add(noteInfo);
+		
+		Zoas.noteform_p.set();
+		Zoas.laftCard.show(Zoas.left_panel, "NoteForm");
+		
 	}
 }

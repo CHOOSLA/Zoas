@@ -26,8 +26,8 @@ public class Home extends JPanel {
 		ArrayList<NoteInfo> notelist=Zoas.user.getNoteList();
 		int notes=notelist.size();	//노트 배열의 개수
 		if(notes>0) {
-			lb4.setText(notelist.get(notes-1).getName());
-			lb5.setText(notelist.get(notes-1).getEditDate());
+			lb4.setText(notelist.get(notes-1).getclass_id());
+			//lb5.setText(notelist.get(notes-1).getEditDate());
 			lb4_icon.setIcon(noteicon);
 			add(notepanel);
 		}

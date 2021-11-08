@@ -3,11 +3,12 @@ import java.util.*;
 
 import com.google.gson.annotations.*;
 public class User {
-	private String username;	//¾ÆÀÌµğ	
-	private String password;	//ºñ¹Ğ¹øÈ£
-	private String key;	//¼­¹ö°¡ ÁÖ´Â »ç¿ëÀÚ Å°
-	private String classid;	//ÀÔ·Â¹ŞÀº ÇöÀç È¸ÀÇ ¾ÆÀÌµğ
-	private ArrayList<String> classidList=new ArrayList<String>();	//Âü¿©ÇÑ È¸ÀÇ ¸®½ºÆ®	
+	private String username;	//ì•„ì´ë””	
+	private String password;	//ë¹„ë°€ë²ˆí˜¸
+	private String key;	//ì„œë²„ê°€ ì£¼ëŠ” ì‚¬ìš©ì í‚¤
+	private String classid;	//ì…ë ¥ë°›ì€ í˜„ì¬ íšŒì˜ ì•„ì´ë””
+	private String noteclassid;	//ì„ íƒí•œ ë…¸íŠ¸ íšŒì˜ ì•„ì´ë””
+	private ArrayList<String> classidList=new ArrayList<String>();	//ì°¸ì—¬í•œ íšŒì˜ ë¦¬ìŠ¤íŠ¸	
 	private ArrayList<NoteInfo> noteList=new ArrayList<NoteInfo>();
 	
     public String getusername() { return username; }
@@ -16,8 +17,11 @@ public class User {
     public String getpassword() { return password; }
     public void setpassword(String value) { this.password = value; }
     
-    public String getclassid() { return classid; }
-    public void setclassid(String value) { this.classid = value; }
+    public String getnoteclassid() { return classid; }
+    public void setnoteclassid(String value) { this.classid = value; }
+    
+    public String getclassid() { return noteclassid; }
+    public void setclassid(String value) { this.noteclassid = value; }
     
     public String getkey() { return key; }
     public void setkey(String value) { this.key = value; }
