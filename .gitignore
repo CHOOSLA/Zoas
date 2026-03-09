@@ -4,3 +4,17 @@
 /src/zoas_5/resources/test,04,Nov,21.mp4
 /src/zoas_5/resources/test.mp4
 
+### Eclipse IDE
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.project
+.classpath
